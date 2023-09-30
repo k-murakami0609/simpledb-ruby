@@ -7,3 +7,4 @@ gem 'minitest'
 gem 'rubocop', group: 'development', require: false
 gem 'values'
 gem 'hexdump', '~> 1.0'
+gem 'rake'

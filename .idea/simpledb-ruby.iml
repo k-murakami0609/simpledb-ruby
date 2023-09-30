@@ -155,6 +155,28 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="rake (v13.0.6) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$USER_HOME$/.gem/ruby/3.2.0/gems/rake-13.0.6/doc" />
+          <root url="file://$USER_HOME$/.gem/ruby/3.2.0/gems/rake-13.0.6/exe" />
+          <root url="file://$USER_HOME$/.gem/ruby/3.2.0/gems/rake-13.0.6/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/.gem/ruby/3.2.0/gems/rake-13.0.6/doc" />
+          <root url="file://$USER_HOME$/.gem/ruby/3.2.0/gems/rake-13.0.6/exe" />
+          <root url="file://$USER_HOME$/.gem/ruby/3.2.0/gems/rake-13.0.6/lib" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$USER_HOME$/.gem/ruby/3.2.0/gems/rake-13.0.6/doc" />
+          <root url="file://$USER_HOME$/.gem/ruby/3.2.0/gems/rake-13.0.6/exe" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="regexp_parser (v2.8.1) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="4" />
