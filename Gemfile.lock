@@ -3,6 +3,7 @@ GEM
   specs:
     ast (2.4.2)
     base64 (0.1.1)
+    hexdump (1.0.0)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
     minitest (5.20.0)
@@ -30,13 +31,16 @@ GEM
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
     unicode-display_width (2.4.2)
+    values (1.8.0)
 
 PLATFORMS
   x86_64-darwin-22
 
 DEPENDENCIES
+  hexdump (~> 1.0)
   minitest
   rubocop
+  values
 
 BUNDLED WITH
    2.4.19
