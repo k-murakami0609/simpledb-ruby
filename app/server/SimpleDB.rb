@@ -2,6 +2,7 @@
 
 require_relative '../file/FileMgr'
 require_relative '../log/LogMgr'
+require_relative '../buffer/BufferMgr'
 class SimpleDB
   LOG_FILE = 'simpledb.log'
 
@@ -14,7 +15,7 @@ class SimpleDB
 
     @file_manager = FileMgr.new(db_directory_path, block_size)
     @log_manager = LogMgr.new(@file_manager, LOG_FILE)
-    # @buffer_manager = BufferManager.new(@file_manager, @log_manager, buffer_size)
+    @buffer_manager = BufferMgr.new(@file_manager, @log_manager, buffer_size)
   end
 
   # def new_transaction
