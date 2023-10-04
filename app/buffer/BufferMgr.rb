@@ -7,6 +7,8 @@ class BufferMgr
   def initialize(fm, lm, num_buffs)
     @buffer_pool = Array.new(num_buffs) { Buffer.new(fm, lm) }
     @num_available = num_buffs
+    @mutex = Mutex.new
+    @full = ConditionVariable.new
   end
 
   def available
@@ -24,19 +26,21 @@ class BufferMgr
     return if buff.pinned?
 
     @num_available += 1
+    @full.signal
   end
 
   def pin(blk)
     timestamp = Time.now.to_i * 1000 # milliseconds
-    buff = try_to_pin(blk)
-    while buff.nil? && !waiting_too_long(timestamp)
-      # Rubyではスレッドのwaitを使って時間を待ちますが、ここではsleepを使っています
-      sleep(MAX_TIME / 1000.0)
+    @mutex.synchronize do
       buff = try_to_pin(blk)
-    end
-    raise 'BufferAbortException' if buff.nil?
+      while buff.nil? && !waiting_too_long(timestamp)
+        @full.wait(@mutex, MAX_TIME / 1000.0)
+        buff = try_to_pin(blk)
+      end
+      raise 'BufferAbortException' if buff.nil?
 
-    buff
+      buff
+    end
   end
 
   private
