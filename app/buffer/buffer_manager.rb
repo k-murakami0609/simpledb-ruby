@@ -16,14 +16,14 @@ class BufferManager
   end
 
   def flush_all(txnum)
-    @buffer_pool.each do |buff|
-      buff.flush if buff.modifying_tx == txnum
+    @buffer_pool.each do |buffer|
+      buffer.flush if buffer.modifying_tx == txnum
     end
   end
 
-  def unpin(buff)
-    buff.unpin
-    return if buff.pinned?
+  def unpin(buffer)
+    buffer.unpin
+    return if buffer.pinned?
 
     @num_available += 1
     @full.signal
@@ -32,14 +32,14 @@ class BufferManager
   def pin(blk)
     timestamp = Time.now.to_i * 1000 # milliseconds
     @mutex.synchronize do
-      buff = try_to_pin(blk)
-      while buff.nil? && !waiting_too_long(timestamp)
+      buffer = try_to_pin(blk)
+      while buffer.nil? && !waiting_too_long(timestamp)
         @full.wait(@mutex, MAX_TIME / 1000.0)
-        buff = try_to_pin(blk)
+        buffer = try_to_pin(blk)
       end
-      raise "BufferAbortException" if buff.nil?
+      raise "BufferAbortException" if buffer.nil?
 
-      buff
+      buffer
     end
   end
 
@@ -50,23 +50,23 @@ class BufferManager
   end
 
   def try_to_pin(blk)
-    buff = find_existing_buffer(blk)
-    if buff.nil?
-      buff = choose_unpinned_buffer
-      return nil if buff.nil?
+    buffer = find_existing_buffer(blk)
+    if buffer.nil?
+      buffer = choose_unpinned_buffer
+      return nil if buffer.nil?
 
-      buff.assign_to_block(blk)
+      buffer.assign_to_block(blk)
     end
-    @num_available -= 1 unless buff.pinned?
-    buff.pin
-    buff
+    @num_available -= 1 unless buffer.pinned?
+    buffer.pin
+    buffer
   end
 
   def find_existing_buffer(blk)
-    @buffer_pool.find { |buff| buff.block && buff.block == blk }
+    @buffer_pool.find { |buffer| buffer.block && buffer.block == blk }
   end
 
   def choose_unpinned_buffer
-    @buffer_pool.find { |buff| !buff.pinned? }
+    @buffer_pool.find { |buffer| !buffer.pinned? }
   end
 end

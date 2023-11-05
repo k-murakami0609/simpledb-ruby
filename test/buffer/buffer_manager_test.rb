@@ -17,11 +17,11 @@ class BufferManagerTest < Minitest::Test
   end
 
   def test_is_work
-    buff1 = @buffer_manager.pin(BlockId.new("testfile", 1))
-    page1 = buff1.contents
+    buffer1 = @buffer_manager.pin(BlockId.new("testfile", 1))
+    page1 = buffer1.contents
     page1.set_int(0, 9999)
-    buff1.set_modified(1, 0) # placeholder values
-    @buffer_manager.unpin(buff1)
+    buffer1.set_modified(1, 0) # placeholder values
+    @buffer_manager.unpin(buffer1)
 
     @buffer_manager.pin(BlockId.new("testfile", 2))
     @buffer_manager.pin(BlockId.new("testfile", 3))
