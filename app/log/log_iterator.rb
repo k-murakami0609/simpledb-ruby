@@ -28,7 +28,7 @@ class LogIterator
 
   def next
     if @currentpos == @file_manager.block_size
-      @block_id = BlockId.new(@block_id.filename, @block_id.block_number - 1)
+      @block_id = BlockId.new(@block_id.file_name, @block_id.block_number - 1)
       move_to_block(@block_id)
     end
 

@@ -36,7 +36,7 @@ class FileManager
   end
 
   def read(block_id, page)
-    f = get_file(block_id.filename)
+    f = get_file(block_id.file_name)
     f.seek(block_id.block_number * @block_size)
     f.read(page.contents.size, page.contents)
   rescue => e
@@ -44,18 +44,18 @@ class FileManager
   end
 
   def write(block_id, page)
-    f = get_file(block_id.filename)
+    f = get_file(block_id.file_name)
     f.seek(block_id.block_number * @block_size)
     f.write(page.contents)
   rescue => e
     raise "cannot write block #{block_id}: #{e.message}"
   end
 
-  def append(filename)
-    new_block_num = length(filename)
-    block_id = BlockId.new(filename, new_block_num)
+  def append(file_name)
+    new_block_num = length(file_name)
+    block_id = BlockId.new(file_name, new_block_num)
     begin
-      f = get_file(block_id.filename)
+      f = get_file(block_id.file_name)
       f.seek(block_id.block_number * @block_size)
       f.write("\0" * @block_size)
     rescue => e
@@ -64,21 +64,21 @@ class FileManager
     block_id
   end
 
-  def length(filename)
-    f = get_file(filename)
+  def length(file_name)
+    f = get_file(file_name)
     f.size / @block_size
   rescue => e
-    raise "cannot access #{filename}: #{e.message}"
+    raise "cannot access #{file_name}: #{e.message}"
   end
 
   private
 
-  def get_file(filename)
-    f = @open_files[filename]
+  def get_file(file_name)
+    f = @open_files[file_name]
     unless f
-      db_table = File.join(@db_directory, filename)
+      db_table = File.join(@db_directory, file_name)
       f = File.new(db_table, "w+b")
-      @open_files[filename] = f
+      @open_files[file_name] = f
     end
     f
   end
