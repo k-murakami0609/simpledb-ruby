@@ -48,7 +48,7 @@ class Page
   end
 
   def self.max_length(str)
-    4 + str.length * BYTES_PER_UNIT
+    4 + (str.length * BYTES_PER_UNIT)
   end
 
   def contents

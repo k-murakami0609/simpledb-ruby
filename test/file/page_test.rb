@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
-require_relative '../../app/file/Page'
+require_relative '../../app/file/page'
 
 class PageTest < Minitest::Test
   def setup

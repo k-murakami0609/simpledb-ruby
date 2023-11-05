@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
-require_relative '../../app/file/FileMgr'
-require_relative '../../app/file/Page'
-require_relative '../../app/file/BlockId'
+require_relative '../../app/file/file_mgr'
+require_relative '../../app/file/page'
+require_relative '../../app/file/block_id'
 
 class FileMgrTest < Minitest::Test
   def setup

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../file/FileMgr'
-require_relative '../log/LogMgr'
-require_relative '../buffer/BufferMgr'
+require_relative '../file/file_mgr'
+require_relative '../log/log_mgr'
+require_relative '../buffer/buffer_mgr'
 class SimpleDB
   LOG_FILE = 'simpledb.log'
 

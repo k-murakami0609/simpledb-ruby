@@ -2,7 +2,7 @@
 
 require 'minitest/autorun'
 
-require_relative '../../app/server/SimpleDB'
+require_relative '../../app/server/simple_db'
 
 class LogIteratorTest < Minitest::Test
   def setup

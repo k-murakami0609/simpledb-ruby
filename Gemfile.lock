@@ -6,6 +6,7 @@ GEM
     hexdump (1.0.0)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
+    lint_roller (1.1.0)
     minitest (5.20.0)
     parallel (1.23.0)
     parser (3.2.2.3)
@@ -30,11 +31,27 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
+    rubocop-performance (1.19.1)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.13.0)
+    standard (1.31.1)
+      language_server-protocol (~> 3.17.0.2)
+      lint_roller (~> 1.0)
+      rubocop (~> 1.56.2)
+      standard-custom (~> 1.0.0)
+      standard-performance (~> 1.2)
+    standard-custom (1.0.2)
+      lint_roller (~> 1.0)
+      rubocop (~> 1.50)
+    standard-performance (1.2.1)
+      lint_roller (~> 1.1)
+      rubocop-performance (~> 1.19.1)
     unicode-display_width (2.4.2)
     values (1.8.0)
 
 PLATFORMS
+  arm64-darwin-22
   x86_64-darwin-22
   x86_64-linux
 
@@ -43,6 +60,7 @@ DEPENDENCIES
   minitest
   rake
   rubocop
+  standard
   values
 
 BUNDLED WITH

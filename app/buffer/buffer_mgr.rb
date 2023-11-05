@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'Buffer'
+require_relative 'buffer'
 class BufferMgr
   MAX_TIME = 10_000 # 10 seconds
 
@@ -46,7 +46,7 @@ class BufferMgr
   private
 
   def waiting_too_long(start_time)
-    Time.now.to_i * 1000 - start_time > MAX_TIME
+    (Time.now.to_i * 1000) - start_time > MAX_TIME
   end
 
   def try_to_pin(blk)
