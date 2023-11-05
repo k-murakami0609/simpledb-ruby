@@ -29,13 +29,13 @@ class BufferManager
     @full.signal
   end
 
-  def pin(blk)
+  def pin(block_id)
     timestamp = Time.now.to_i * 1000 # milliseconds
     @mutex.synchronize do
-      buffer = try_to_pin(blk)
+      buffer = try_to_pin(block_id)
       while buffer.nil? && !waiting_too_long(timestamp)
         @full.wait(@mutex, MAX_TIME / 1000.0)
-        buffer = try_to_pin(blk)
+        buffer = try_to_pin(block_id)
       end
       raise "BufferAbortException" if buffer.nil?
 
@@ -49,21 +49,21 @@ class BufferManager
     (Time.now.to_i * 1000) - start_time > MAX_TIME
   end
 
-  def try_to_pin(blk)
-    buffer = find_existing_buffer(blk)
+  def try_to_pin(block_id)
+    buffer = find_existing_buffer(block_id)
     if buffer.nil?
       buffer = choose_unpinned_buffer
       return nil if buffer.nil?
 
-      buffer.assign_to_block(blk)
+      buffer.assign_to_block(block_id)
     end
     @num_available -= 1 unless buffer.pinned?
     buffer.pin
     buffer
   end
 
-  def find_existing_buffer(blk)
-    @buffer_pool.find { |buffer| buffer.block && buffer.block == blk }
+  def find_existing_buffer(block_id)
+    @buffer_pool.find { |buffer| buffer.block && buffer.block == block_id }
   end
 
   def choose_unpinned_buffer

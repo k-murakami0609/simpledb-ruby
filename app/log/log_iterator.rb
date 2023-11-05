@@ -5,15 +5,15 @@ require_relative "../file/block_id"
 class LogIterator
   include Enumerable
 
-  attr_accessor :blk
+  attr_accessor :block_id
 
   INTEGER_SIZE = 4
 
-  def initialize(file_manager, blk)
+  def initialize(file_manager, block_id)
     @file_manager = file_manager
-    @blk = blk
+    @block_id = block_id
     @p = Page.new(file_manager.block_size)
-    move_to_block(@blk)
+    move_to_block(@block_id)
   end
 
   def each
@@ -23,13 +23,13 @@ class LogIterator
   end
 
   def has_next?
-    @currentpos < @file_manager.block_size || @blk.block_number.positive?
+    @currentpos < @file_manager.block_size || @block_id.block_number.positive?
   end
 
   def next
     if @currentpos == @file_manager.block_size
-      @blk = BlockId.new(@blk.filename, @blk.block_number - 1)
-      move_to_block(@blk)
+      @block_id = BlockId.new(@block_id.filename, @block_id.block_number - 1)
+      move_to_block(@block_id)
     end
 
     rec = @p.get_bytes(@currentpos)
@@ -39,8 +39,8 @@ class LogIterator
 
   private
 
-  def move_to_block(blk)
-    @file_manager.read(blk, @p)
+  def move_to_block(block_id)
+    @file_manager.read(block_id, @p)
     @boundary = @p.get_int(0)
     @currentpos = @boundary
   end

@@ -4,7 +4,7 @@ require_relative "../file/block_id"
 require_relative "../file/page"
 require_relative "log_iterator"
 class LogManager
-  attr_accessor :file_manager, :logfile, :logpage, :currentblk, :latest_lsn, :last_saved_lsn
+  attr_accessor :file_manager, :logfile, :logpage, :currentblock_id, :latest_lsn, :last_saved_lsn
 
   INTEGER_SIZE = 4
   def initialize(file_manager, logfile)
@@ -13,11 +13,11 @@ class LogManager
     @logpage = Page.new(file_manager.block_size)
     log_size = file_manager.length(logfile)
 
-    @currentblk = if log_size.zero?
+    @currentblock_id = if log_size.zero?
       append_new_block
     else
       BlockId.new(logfile, log_size - 1)
-      file_manager.read(@currentblk, @logpage)
+      file_manager.read(@currentblock_id, @logpage)
     end
     @latest_lsn = 0
     @last_saved_lsn = 0
@@ -26,13 +26,13 @@ class LogManager
   def flush(lsn = nil)
     return unless lsn.nil? || lsn >= @last_saved_lsn
 
-    @file_manager.write(@currentblk, @logpage)
+    @file_manager.write(@currentblock_id, @logpage)
     @last_saved_lsn = @latest_lsn
   end
 
   def iterator
     flush
-    LogIterator.new(@file_manager, @currentblk)
+    LogIterator.new(@file_manager, @currentblock_id)
   end
 
   def append(logrec)
@@ -42,7 +42,7 @@ class LogManager
 
     if boundary - bytes_needed < INTEGER_SIZE
       flush
-      @currentblk = append_new_block
+      @currentblock_id = append_new_block
       boundary = @logpage.get_int(0)
     end
 
@@ -56,9 +56,9 @@ class LogManager
   private
 
   def append_new_block
-    blk = @file_manager.append(@logfile)
+    block_id = @file_manager.append(@logfile)
     @logpage.set_int(0, @file_manager.block_size)
-    @file_manager.write(blk, @logpage)
-    blk
+    @file_manager.write(block_id, @logpage)
+    block_id
   end
 end

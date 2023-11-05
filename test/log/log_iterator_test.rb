@@ -35,6 +35,6 @@ class LogIteratorTest < Minitest::Test
   def assert_next_bytes(iter, expected_bytes, expected_block_number)
     bytes = iter.next
     assert_equal expected_bytes, bytes
-    assert_equal expected_block_number, iter.blk.block_number
+    assert_equal expected_block_number, iter.block_id.block_number
   end
 end
