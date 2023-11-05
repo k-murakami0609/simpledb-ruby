@@ -2,4 +2,4 @@
 
 require "values"
 
-BlockId = Value.new(:filename, :blknum)
+BlockId = Value.new(:filename, :block_number)

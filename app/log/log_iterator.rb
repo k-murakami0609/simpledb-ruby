@@ -23,12 +23,12 @@ class LogIterator
   end
 
   def has_next?
-    @currentpos < @file_manager.block_size || @blk.blknum.positive?
+    @currentpos < @file_manager.block_size || @blk.block_number.positive?
   end
 
   def next
     if @currentpos == @file_manager.block_size
-      @blk = BlockId.new(@blk.filename, @blk.blknum - 1)
+      @blk = BlockId.new(@blk.filename, @blk.block_number - 1)
       move_to_block(@blk)
     end
 

@@ -37,7 +37,7 @@ class FileManager
 
   def read(block_id, page)
     f = get_file(block_id.filename)
-    f.seek(block_id.blknum * @block_size)
+    f.seek(block_id.block_number * @block_size)
     f.read(page.contents.size, page.contents)
   rescue => e
     raise "cannot read block #{block_id}: #{e.message}"
@@ -45,7 +45,7 @@ class FileManager
 
   def write(block_id, page)
     f = get_file(block_id.filename)
-    f.seek(block_id.blknum * @block_size)
+    f.seek(block_id.block_number * @block_size)
     f.write(page.contents)
   rescue => e
     raise "cannot write block #{block_id}: #{e.message}"
@@ -56,7 +56,7 @@ class FileManager
     block_id = BlockId.new(filename, new_block_num)
     begin
       f = get_file(block_id.filename)
-      f.seek(block_id.blknum * @block_size)
+      f.seek(block_id.block_number * @block_size)
       f.write("\0" * @block_size)
     rescue => e
       raise "cannot append block #{block_id}: #{e.message}"
