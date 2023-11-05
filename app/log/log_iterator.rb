@@ -19,10 +19,10 @@ class LogIterator
   def each
     return enum_for(:each) unless block_given?
 
-    yield self.next while has_next?
+    yield self.next while next?
   end
 
-  def has_next?
+  def next?
     @currentpos < @file_manager.block_size || @block_id.block_number.positive?
   end
 

@@ -29,7 +29,7 @@ class LogIteratorTest < Minitest::Test
     assert_next_bytes(iter, [1, 2, 3, 4], 0)
     assert_next_bytes(iter, [0, 2, 3, 4], 0)
 
-    assert_equal(false, iter.has_next?)
+    assert_equal(false, iter.next?)
   end
 
   def assert_next_bytes(iter, expected_bytes, expected_block_number)
