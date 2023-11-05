@@ -15,10 +15,6 @@ class Buffer
     @lsn = -1
   end
 
-  def block
-    @block_id
-  end
-
   def set_modified(transaction_number, lsn)
     @transaction_number = transaction_number
     @lsn = lsn if lsn >= 0

@@ -63,7 +63,7 @@ class BufferManager
   end
 
   def find_existing_buffer(block_id)
-    @buffer_pool.find { |buffer| buffer.block && buffer.block == block_id }
+    @buffer_pool.find { |buffer| buffer.block_id && buffer.block_id == block_id }
   end
 
   def choose_unpinned_buffer
