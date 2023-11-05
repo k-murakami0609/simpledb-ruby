@@ -15,9 +15,9 @@ class BufferManager
     @num_available
   end
 
-  def flush_all(txnum)
+  def flush_all(transaction_number)
     @buffer_pool.each do |buffer|
-      buffer.flush if buffer.modifying_tx == txnum
+      buffer.flush if buffer.modifying_tx == transaction_number
     end
   end
 

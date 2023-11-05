@@ -3,7 +3,7 @@
 require_relative "../file/page"
 
 class Buffer
-  attr_accessor :contents, :blk, :pins, :txnum, :lsn
+  attr_accessor :contents, :blk, :pins, :transaction_number, :lsn
 
   def initialize(file_manager, log_manager)
     @file_manager = file_manager
@@ -11,7 +11,7 @@ class Buffer
     @contents = Page.new(file_manager.block_size) # assuming a Page class is defined with a method block_size
     @blk = nil
     @pins = 0
-    @txnum = -1
+    @transaction_number = -1
     @lsn = -1
   end
 
@@ -19,8 +19,8 @@ class Buffer
     @blk
   end
 
-  def set_modified(txnum, lsn)
-    @txnum = txnum
+  def set_modified(transaction_number, lsn)
+    @transaction_number = transaction_number
     @lsn = lsn if lsn >= 0
   end
 
@@ -29,7 +29,7 @@ class Buffer
   end
 
   def modifying_tx
-    @txnum
+    @transaction_number
   end
 
   def assign_to_block(b)
@@ -40,11 +40,11 @@ class Buffer
   end
 
   def flush
-    return unless @txnum >= 0
+    return unless @transaction_number >= 0
 
     @log_manager.flush(@lsn)
     @file_manager.write(@blk, @contents)
-    @txnum = -1
+    @transaction_number = -1
   end
 
   def pin
