@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'minitest/autorun'
+require "minitest/autorun"
 
-require_relative '../../app/server/simple_db'
+require_relative "../../app/server/simple_db"
 
 class LogIteratorTest < Minitest::Test
   def setup
-    FileUtils.rm_rf('./tmp/log_iterator')
-    @simple_db = SimpleDB.new('./tmp/log_iterator', 30, 8)
+    FileUtils.rm_rf("./tmp/log_iterator")
+    @simple_db = SimpleDB.new("./tmp/log_iterator", 30, 8)
     @log_manager = @simple_db.log_manager
   end
 

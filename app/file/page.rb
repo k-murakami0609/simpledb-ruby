@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'stringio'
+require "stringio"
 
 class Page
   CHARSET = Encoding::UTF_8
@@ -19,28 +19,28 @@ class Page
 
   def get_int(offset)
     @buffer.seek(offset)
-    @buffer.read(BYTES_PER_UNIT).unpack1('l>')
+    @buffer.read(BYTES_PER_UNIT).unpack1("l>")
   end
 
   def set_int(offset, n)
     @buffer.seek(offset)
-    @buffer.write([n].pack('l>'))
+    @buffer.write([n].pack("l>"))
   end
 
   def get_bytes(offset)
     @buffer.seek(offset)
-    length = @buffer.read(BYTES_PER_UNIT).unpack1('l>')
+    length = @buffer.read(BYTES_PER_UNIT).unpack1("l>")
     @buffer.read(length).bytes
   end
 
   def set_bytes(offset, bytes)
     @buffer.seek(offset)
-    @buffer.write([bytes.length].pack('l>'))
-    @buffer.write(bytes.pack('c*'))
+    @buffer.write([bytes.length].pack("l>"))
+    @buffer.write(bytes.pack("c*"))
   end
 
   def get_string(offset)
-    get_bytes(offset).pack('c*').force_encoding(CHARSET)
+    get_bytes(offset).pack("c*").force_encoding(CHARSET)
   end
 
   def set_string(offset, str)

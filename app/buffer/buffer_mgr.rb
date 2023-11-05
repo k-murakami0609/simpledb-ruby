@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'buffer'
+require_relative "buffer"
 class BufferMgr
   MAX_TIME = 10_000 # 10 seconds
 
@@ -37,7 +37,7 @@ class BufferMgr
         @full.wait(@mutex, MAX_TIME / 1000.0)
         buff = try_to_pin(blk)
       end
-      raise 'BufferAbortException' if buff.nil?
+      raise "BufferAbortException" if buff.nil?
 
       buff
     end

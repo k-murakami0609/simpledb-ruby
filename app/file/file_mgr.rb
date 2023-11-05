@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'fileutils'
-require_relative 'block_id'
+require "fileutils"
+require_relative "block_id"
 
 # 階層構造
 # File
@@ -29,7 +29,7 @@ class FileMgr
 
     # remove any leftover temporary tables
     Dir.each_child(db_directory) do |filename|
-      File.delete(File.join(db_directory, filename)) if filename.start_with?('temp')
+      File.delete(File.join(db_directory, filename)) if filename.start_with?("temp")
     end
 
     @open_files = {}
@@ -39,7 +39,7 @@ class FileMgr
     f = get_file(block_id.filename)
     f.seek(block_id.blknum * @block_size)
     f.read(page.contents.size, page.contents)
-  rescue StandardError => e
+  rescue => e
     raise "cannot read block #{block_id}: #{e.message}"
   end
 
@@ -47,7 +47,7 @@ class FileMgr
     f = get_file(block_id.filename)
     f.seek(block_id.blknum * @block_size)
     f.write(page.contents)
-  rescue StandardError => e
+  rescue => e
     raise "cannot write block #{block_id}: #{e.message}"
   end
 
@@ -58,7 +58,7 @@ class FileMgr
       f = get_file(block_id.filename)
       f.seek(block_id.blknum * @block_size)
       f.write("\0" * @block_size)
-    rescue StandardError => e
+    rescue => e
       raise "cannot append block #{block_id}: #{e.message}"
     end
     block_id
@@ -67,7 +67,7 @@ class FileMgr
   def length(filename)
     f = get_file(filename)
     f.size / @block_size
-  rescue StandardError => e
+  rescue => e
     raise "cannot access #{filename}: #{e.message}"
   end
 
@@ -77,7 +77,7 @@ class FileMgr
     f = @open_files[filename]
     unless f
       db_table = File.join(@db_directory, filename)
-      f = File.new(db_table, 'w+b')
+      f = File.new(db_table, "w+b")
       @open_files[filename] = f
     end
     f

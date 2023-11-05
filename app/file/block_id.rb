@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-require 'values'
+require "values"
 
 BlockId = Value.new(:filename, :blknum)

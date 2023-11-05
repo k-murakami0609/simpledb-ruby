@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../file/block_id'
-require_relative '../file/page'
-require_relative 'log_iterator'
+require_relative "../file/block_id"
+require_relative "../file/page"
+require_relative "log_iterator"
 class LogMgr
   attr_accessor :fm, :logfile, :logpage, :currentblk, :latest_lsn, :last_saved_lsn
 
@@ -14,11 +14,11 @@ class LogMgr
     log_size = fm.length(logfile)
 
     @currentblk = if log_size.zero?
-                    append_new_block
-                  else
-                    BlockId.new(logfile, log_size - 1)
-                    fm.read(@currentblk, @logpage)
-                  end
+      append_new_block
+    else
+      BlockId.new(logfile, log_size - 1)
+      fm.read(@currentblk, @logpage)
+    end
     @latest_lsn = 0
     @last_saved_lsn = 0
   end

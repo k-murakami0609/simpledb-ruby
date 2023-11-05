@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'minitest/autorun'
-require_relative '../../app/file/page'
+require "minitest/autorun"
+require_relative "../../app/file/page"
 
 class PageTest < Minitest::Test
   def setup
@@ -27,7 +27,7 @@ class PageTest < Minitest::Test
     page = Page.new(100)
     offset = 0
 
-    test_strings = ['hello', '🀄🀄🀄', 'ruby は便利']
+    test_strings = ["hello", "🀄🀄🀄", "ruby は便利"]
 
     test_strings.each do |str|
       page.set_string(offset, str)

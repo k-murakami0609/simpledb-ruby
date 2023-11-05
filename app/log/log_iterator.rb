@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../file/block_id'
+require_relative "../file/block_id"
 
 class LogIterator
   include Enumerable
