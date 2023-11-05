@@ -7,16 +7,16 @@ class LogManager
   attr_accessor :file_manager, :log_file, :log_page, :current_block_id, :latest_lsn, :last_saved_lsn
 
   INTEGER_SIZE = 4
-  def initialize(file_manager, logfile)
+  def initialize(file_manager, log_file)
     @file_manager = file_manager
-    @log_file = logfile
+    @log_file = log_file
     @log_page = Page.new(file_manager.block_size)
-    log_size = file_manager.length(logfile)
+    log_size = file_manager.length(log_file)
 
     @current_block_id = if log_size.zero?
       append_new_block
     else
-      BlockId.new(logfile, log_size - 1)
+      BlockId.new(log_file, log_size - 1)
       file_manager.read(@current_block_id, @log_page)
     end
     @latest_lsn = 0

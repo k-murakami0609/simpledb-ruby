@@ -1,5 +1,3 @@
 # frozen_string_literal: true
 
-require "values"
-
-BlockId = Value.new(:filename, :block_number)
+BlockId = Data.define(:file_name, :block_number)
