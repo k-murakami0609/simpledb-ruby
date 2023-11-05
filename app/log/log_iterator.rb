@@ -12,7 +12,7 @@ class LogIterator
   def initialize(file_manager, block_id)
     @file_manager = file_manager
     @block_id = block_id
-    @p = Page.new(file_manager.block_size)
+    @page = Page.new(file_manager.block_size)
     move_to_block(@block_id)
   end
 
@@ -32,16 +32,16 @@ class LogIterator
       move_to_block(@block_id)
     end
 
-    rec = @p.get_bytes(@currentpos)
-    @currentpos += INTEGER_SIZE + rec.length
-    rec
+    record = @page.get_bytes(@currentpos)
+    @currentpos += INTEGER_SIZE + record.length
+    record
   end
 
   private
 
   def move_to_block(block_id)
-    @file_manager.read(block_id, @p)
-    @boundary = @p.get_int(0)
+    @file_manager.read(block_id, @page)
+    @boundary = @page.get_int(0)
     @currentpos = @boundary
   end
 end

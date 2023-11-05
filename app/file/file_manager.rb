@@ -28,8 +28,8 @@ class FileManager
     FileUtils.mkdir_p(db_directory) if @is_new
 
     # remove any leftover temporary tables
-    Dir.each_child(db_directory) do |filename|
-      File.delete(File.join(db_directory, filename)) if filename.start_with?("temp")
+    Dir.each_child(db_directory) do |file_name|
+      File.delete(File.join(db_directory, file_name)) if file_name.start_with?("temp")
     end
 
     @open_files = {}
