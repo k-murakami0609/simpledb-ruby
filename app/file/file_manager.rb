@@ -16,7 +16,7 @@ require_relative "block_id"
 #     │   └───Record
 #     └───Page
 #         └───Record
-class FileMgr
+class FileManager
   attr_reader :block_size, :is_new
 
   def initialize(db_directory, block_size)

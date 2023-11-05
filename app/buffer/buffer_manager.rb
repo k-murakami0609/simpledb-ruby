@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "buffer"
-class BufferMgr
+class BufferManager
   MAX_TIME = 10_000 # 10 seconds
 
   def initialize(fm, lm, num_buffs)

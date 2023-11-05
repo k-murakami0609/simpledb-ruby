@@ -4,7 +4,7 @@ require "minitest/autorun"
 
 require_relative "../../app/server/simple_db"
 require_relative "../../app/file/block_id"
-class BufferMgrTest < Minitest::Test
+class BufferManagerTest < Minitest::Test
   def setup
     FileUtils.rm_rf("./tmp/buffer_manager")
     @simple_db = SimpleDB.new("./tmp/buffer_manager", 400, 3)

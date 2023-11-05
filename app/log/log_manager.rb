@@ -3,7 +3,7 @@
 require_relative "../file/block_id"
 require_relative "../file/page"
 require_relative "log_iterator"
-class LogMgr
+class LogManager
   attr_accessor :fm, :logfile, :logpage, :currentblk, :latest_lsn, :last_saved_lsn
 
   INTEGER_SIZE = 4
