@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../file/BlockId'
 
 class LogIterator
@@ -21,7 +23,7 @@ class LogIterator
   end
 
   def has_next?
-    @currentpos < @fm.block_size || @blk.blknum > 0
+    @currentpos < @fm.block_size || @blk.blknum.positive?
   end
 
   def next

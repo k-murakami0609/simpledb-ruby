@@ -23,9 +23,9 @@ class BufferMgrTest < Minitest::Test
     buff1.set_modified(1, 0) # placeholder values
     @buffer_manager.unpin(buff1)
 
-    buff2 = @buffer_manager.pin(BlockId.new('testfile', 2))
-    buff3 = @buffer_manager.pin(BlockId.new('testfile', 3))
-    buff4 = @buffer_manager.pin(BlockId.new('testfile', 4))
+    @buffer_manager.pin(BlockId.new('testfile', 2))
+    @buffer_manager.pin(BlockId.new('testfile', 3))
+    @buffer_manager.pin(BlockId.new('testfile', 4))
 
     @buffer_manager.flush_all(1)
 

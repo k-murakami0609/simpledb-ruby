@@ -25,7 +25,7 @@ class Buffer
   end
 
   def pinned?
-    @pins > 0
+    @pins.positive?
   end
 
   def modifying_tx
