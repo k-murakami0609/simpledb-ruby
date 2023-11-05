@@ -4,8 +4,8 @@ require_relative "buffer"
 class BufferManager
   MAX_TIME = 10_000 # 10 seconds
 
-  def initialize(fm, lm, num_buffs)
-    @buffer_pool = Array.new(num_buffs) { Buffer.new(fm, lm) }
+  def initialize(file_manager, log_manager, num_buffs)
+    @buffer_pool = Array.new(num_buffs) { Buffer.new(file_manager, log_manager) }
     @num_available = num_buffs
     @mutex = Mutex.new
     @full = ConditionVariable.new

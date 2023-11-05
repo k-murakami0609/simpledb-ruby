@@ -5,10 +5,10 @@ require_relative "../file/page"
 class Buffer
   attr_accessor :contents, :blk, :pins, :txnum, :lsn
 
-  def initialize(fm, lm)
-    @fm = fm
-    @lm = lm
-    @contents = Page.new(fm.block_size) # assuming a Page class is defined with a method block_size
+  def initialize(file_manager, log_manager)
+    @file_manager = file_manager
+    @log_manager = log_manager
+    @contents = Page.new(file_manager.block_size) # assuming a Page class is defined with a method block_size
     @blk = nil
     @pins = 0
     @txnum = -1
@@ -35,15 +35,15 @@ class Buffer
   def assign_to_block(b)
     flush
     @blk = b
-    @fm.read(@blk, @contents)
+    @file_manager.read(@blk, @contents)
     @pins = 0
   end
 
   def flush
     return unless @txnum >= 0
 
-    @lm.flush(@lsn)
-    @fm.write(@blk, @contents)
+    @log_manager.flush(@lsn)
+    @file_manager.write(@blk, @contents)
     @txnum = -1
   end
 
