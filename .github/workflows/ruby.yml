@@ -15,8 +15,7 @@ on:
 
 permissions:
   contents: read
-  packages: read
-  statuses: write
+  pull-requests: write
 
 jobs:
   ci:
@@ -37,12 +36,9 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
       run: bundle exec rake
-    - name: lint
-      uses: super-linter/super-linter@v5
-      env:
-        VALIDATE_RUBY: true
-        DEFAULT_BRANCH: main
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        LINTER_RULES_PATH: .
-        RUBY_CONFIG_FILE: .rubocop.yml
+    - name: rubocop
+      uses: reviewdog/action-rubocop@v2
+      with:
+        rubocop_version: gemfile
+        reporter: github-pr-review # Default is github-pr-check
 
