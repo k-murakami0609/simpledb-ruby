@@ -12,11 +12,10 @@ class LogManager
     @log_file = log_file
     @log_page = Page.new(file_manager.block_size)
     log_size = file_manager.length(log_file)
-
-    @current_block_id = if log_size.zero?
-      append_new_block
+    if log_size.zero?
+      @current_block_id = append_new_block
     else
-      BlockId.new(log_file, log_size - 1)
+      @current_block_id = BlockId.new(log_file, log_size - 1)
       file_manager.read(@current_block_id, @log_page)
     end
     @latest_lsn = 0
