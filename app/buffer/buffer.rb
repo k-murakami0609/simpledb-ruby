@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../file/page'
+require_relative "../file/page"
 
 class Buffer
   attr_accessor :contents, :block_id, :pins, :transaction_number, :lsn
