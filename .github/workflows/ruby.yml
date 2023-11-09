@@ -41,4 +41,5 @@ jobs:
       with:
         rubocop_version: gemfile
         reporter: github-pr-review # Default is github-pr-check
+        rubocop_extensions: standard:gemfile
 
