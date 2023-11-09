@@ -15,14 +15,11 @@ on:
 
 permissions:
   contents: read
+  packages: read
+  statuses: write
 
 jobs:
-  test:
-    permissions:
-      contents: read
-      packages: read
-      statuses: write
-
+  ci:
     runs-on: ubuntu-latest
     strategy:
       matrix:
