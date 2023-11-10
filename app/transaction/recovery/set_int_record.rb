@@ -28,7 +28,7 @@ class SetIntRecord
   # file_name: N bytes(4 bytes for length, N bytes for string)
   # block_number: 4 bytes
   # offset: 4 bytes
-  # value: N bytes(4 bytes for length, N bytes for string)
+  # value: 4 bytes
   def self.write_to_log(log_manager, transaction_number, block_id, offset, value)
     positions = UpdateRecord.calc_positions(block_id.file_name)
     record_length = positions[:value_position] + value.size
