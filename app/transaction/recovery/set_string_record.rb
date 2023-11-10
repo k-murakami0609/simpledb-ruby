@@ -1,14 +1,19 @@
 # frozen_string_literal: true
 
 require_relative "operation_code"
-require_relative "update_record"
+require_relative "update_record_helper"
 class SetStringRecord
-  include UpdateRecord
-
   attr_reader :transaction_number
 
   def initialize(page)
-    @transaction_number, @block_id, @offset, @value = parse_record(page, ->(page, position) { page.get_string(position) })
+    file_name = UpdateRecordHelper.get_file_name(page)
+    positions = UpdateRecordHelper.calc_positions(file_name)
+
+    @transaction_number = page.get_int(positions[:transaction_number_position])
+    @block_id = BlockId.new(file_name, page.get_int(positions[:block_number_position]))
+    @offset = page.get_int(positions[:offset_position])
+    @value = page.get_string(positions[:value_position])
+
     @operation_code = OperationCode::SET_STRING
   end
 
@@ -29,7 +34,7 @@ class SetStringRecord
   # offset: 4 bytes
   # value: 4 bytes
   def self.write_to_log(log_manager, transaction_number, block_id, offset, value)
-    positions = UpdateRecord.calc_positions(block_id.file_name)
+    positions = UpdateRecordHelper.calc_positions(block_id.file_name)
     record_length = positions[:value_position] + Page.max_length(value)
     page = Page.new(record_length)
 

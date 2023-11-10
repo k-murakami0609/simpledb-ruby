@@ -5,8 +5,6 @@ require_relative "set_string_record"
 require_relative "operation_code"
 
 class LogRecord
-  attr_reader :operation_code
-
   def undo(transaction)
   end
 
