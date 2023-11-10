@@ -12,6 +12,9 @@ class Page
       @buffer = StringIO.new("\0" * arg)
     when String # byte array
       @buffer = StringIO.new(arg)
+    when Array
+      @buffer = StringIO.new("\0" * arg.length)
+      @buffer.write(arg.pack("c*"))
     else
       raise ArgumentError, "Expected Integer or String, got #{arg.class}"
     end
