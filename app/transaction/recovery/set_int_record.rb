@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "log_record"
+require_relative "operation_code"
 require_relative "update_record"
 class SetIntRecord
   include UpdateRecord
@@ -9,7 +9,7 @@ class SetIntRecord
 
   def initialize(page)
     @transaction_number, @block_id, @offset, @value = parse_record(page, ->(page, position) { page.get_int(position) })
-    @operation_code = LogRecord::SET_INT
+    @operation_code = OperationCode::SET_INT
   end
 
   def to_s
@@ -33,7 +33,7 @@ class SetIntRecord
     record_length = positions[:value_position] + value.size
     page = Page.new(record_length)
 
-    page.set_int(0, LogRecord::SET_INT)
+    page.set_int(0, OperationCode::SET_INT)
     page.set_int(positions[:transaction_number_position], transaction_number)
     page.set_string(positions[:file_name_position], block_id.file_name)
     page.set_int(positions[:block_number_position], block_id.block_number)

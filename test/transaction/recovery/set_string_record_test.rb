@@ -4,6 +4,7 @@ require "minitest/autorun"
 
 require_relative "../../../app/server/simple_db"
 require_relative "../../../app/transaction/recovery/set_string_record"
+require_relative "../../../app/transaction/recovery/log_record"
 
 class SetStringRecordTest < Minitest::Test
   def setup
