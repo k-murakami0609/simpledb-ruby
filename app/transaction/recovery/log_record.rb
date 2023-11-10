@@ -3,6 +3,9 @@
 require_relative "set_int_record"
 require_relative "set_string_record"
 require_relative "rollback_record"
+require_relative "checkpoint_record"
+require_relative "commit_record"
+require_relative "start_record"
 require_relative "operation_code"
 
 class LogRecord
@@ -13,9 +16,9 @@ class LogRecord
     page = Page.new(bytes)
 
     record_class = {
-      # OperationCode::CHECKPOINT => CheckpointRecord,
-      # OperationCode::START => StartRecord,
-      # OperationCode::COMMIT => CommitRecord,
+      OperationCode::CHECKPOINT => CheckpointRecord,
+      OperationCode::START => StartRecord,
+      OperationCode::COMMIT => CommitRecord,
       OperationCode::ROLLBACK => RollbackRecord,
       OperationCode::SET_INT => SetIntRecord,
       OperationCode::SET_STRING => SetStringRecord
