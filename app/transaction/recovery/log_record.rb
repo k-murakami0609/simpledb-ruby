@@ -1,22 +1,15 @@
 # frozen_string_literal: true
 
 require_relative "set_int_record"
-module LogRecord
+require_relative "set_string_record"
+
+class LogRecord
   CHECKPOINT = 0
   START = 1
   COMMIT = 2
   ROLLBACK = 3
   SET_INT = 4
   SET_STRING = 5
-
-  # RECORD_CLASSES = {
-  #   # CHECKPOINT => CheckpointRecord,
-  #   # START => StartRecord,
-  #   # COMMIT => CommitRecord,
-  #   # ROLLBACK => RollbackRecord,
-  #   SET_INT => SetIntRecord
-  #   # SET_STRING => SetStringRecord
-  # }
 
   attr_reader :operation_code
 
@@ -31,8 +24,8 @@ module LogRecord
       # START => StartRecord,
       # COMMIT => CommitRecord,
       # ROLLBACK => RollbackRecord,
-      SET_INT => SetIntRecord
-      # SET_STRING => SetStringRecord
+      SET_INT => SetIntRecord,
+      SET_STRING => SetStringRecord
     }[LogRecord.get_operation_code(page)]
 
     record_class&.new(page)

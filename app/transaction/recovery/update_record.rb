@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module UpdateRecord
-  def parse_record(page)
+  def parse_record(page, callback)
     file_name = page.get_string(8)
     positions = UpdateRecord.calc_positions(file_name)
 
@@ -10,7 +10,7 @@ module UpdateRecord
       page.get_int(positions[:transaction_number_position]),
       BlockId.new(file_name, block_number),
       page.get_int(positions[:offset_position]),
-      page.get_int(positions[:value_position])
+      callback.call(page, positions[:value_position])
     ]
   end
 
