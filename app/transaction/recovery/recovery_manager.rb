@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# transaction ごとにインスタンスが生成される
 class RecoveryManager
   def initialize(transaction, transaction_number, log_manager, buffer_manager)
     @transaction = transaction
