@@ -1,0 +1,15 @@
+# TypeProf 0.21.8
+
+# Classes
+class SetStringRecord
+  @block_id: untyped
+  @offset: untyped
+  @value: untyped
+  @operation_code: untyped
+
+  attr_reader transaction_number: untyped
+  def initialize: (untyped page) -> void
+  def to_s: -> String
+  def undo: (untyped transaction) -> untyped
+  def self.write_to_log: (untyped log_manager, untyped transaction_number, untyped block_id, untyped offset, untyped value) -> untyped
+end

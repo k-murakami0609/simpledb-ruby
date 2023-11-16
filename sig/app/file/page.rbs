@@ -1,0 +1,16 @@
+# TypeProf 0.21.8
+
+# Classes
+class Page
+  @buffer: StringIO
+
+  def initialize: (untyped arg) -> void
+  def get_int: (untyped offset) -> ((Float | Integer | String)?)
+  def set_int: (untyped offset, untyped n) -> Integer
+  def get_bytes: (untyped offset) -> Array[Integer]
+  def set_bytes: (untyped offset, untyped bytes) -> Integer
+  def get_string: (untyped offset) -> String
+  def set_string: (untyped offset, untyped str) -> Integer
+  def self.max_length: (untyped str) -> (Complex | Float | Integer | Rational)
+  def contents: -> String
+end

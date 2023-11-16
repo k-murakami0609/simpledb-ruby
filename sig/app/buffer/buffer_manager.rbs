@@ -1,0 +1,21 @@
+# TypeProf 0.21.8
+
+# Classes
+class BufferManager
+  @buffer_pool: Array[untyped]
+  @num_available: untyped
+  @mutex: untyped
+  @full: untyped
+
+  def initialize: (untyped file_manager, untyped log_manager, untyped number_buffers) -> void
+  def available: -> untyped
+  def flush_all: (untyped transaction_number) -> Array[untyped]
+  def unpin: (untyped buffer) -> nil
+  def pin: (untyped block_id) -> untyped
+
+  private
+  def waiting_too_long: (Integer start_time) -> bool
+  def try_to_pin: (untyped block_id) -> nil
+  def find_existing_buffer: (untyped block_id) -> nil
+  def choose_unpinned_buffer: -> nil
+end

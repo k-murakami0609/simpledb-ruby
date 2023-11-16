@@ -1,0 +1,18 @@
+# TypeProf 0.21.8
+
+# Classes
+class FileManager
+  @db_directory: untyped
+  @open_files: Hash[untyped, File]
+
+  attr_reader block_size: untyped
+  attr_reader is_new: bool
+  def initialize: (untyped db_directory, untyped block_size) -> void
+  def read: (untyped block_id, untyped page) -> String?
+  def write: (untyped block_id, untyped page) -> Integer
+  def append: (untyped file_name) -> untyped
+  def length: (untyped file_name) -> (Complex | Float | Integer | Rational)
+
+  private
+  def get_file: (untyped file_name) -> File
+end

@@ -1,0 +1,8 @@
+# TypeProf 0.21.8
+
+# Classes
+class LogRecord
+  def undo: (untyped transaction) -> nil
+  def self.create_log_record: (untyped bytes) -> untyped
+  def self.get_operation_code: (untyped page) -> untyped
+end
