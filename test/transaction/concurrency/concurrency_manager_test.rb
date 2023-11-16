@@ -77,8 +77,8 @@ class ConcurrencyManagerTest < Minitest::Test
     threads.push(Thread.new do
       concurrency_manager1.s_lock(block_id1)
     end)
-    sleep(0.1)
     threads.push(Thread.new do
+      sleep(1)
       concurrency_manager2.x_lock(block_id1)
     end)
 
