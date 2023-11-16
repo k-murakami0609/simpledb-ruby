@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "operation_code"
-require_relative "../../file/page"
 class CheckpointRecord
   attr_accessor :transaction_number
   def initialize(page)

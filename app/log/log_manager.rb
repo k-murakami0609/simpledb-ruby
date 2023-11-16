@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../file/block_id"
-require_relative "../file/page"
-require_relative "log_iterator"
 class LogManager
   attr_accessor :file_manager, :log_file, :log_page, :current_block_id, :latest_lsn, :last_saved_lsn
 

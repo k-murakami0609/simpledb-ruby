@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "operation_code"
-require_relative "../../file/page"
-
 class StartRecord
   attr_accessor :transaction_number, :operation_code
   def initialize(page)

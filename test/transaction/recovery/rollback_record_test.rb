@@ -3,8 +3,6 @@
 require "minitest/autorun"
 
 require_relative "../../../app/server/simple_db"
-require_relative "../../../app/transaction/recovery/rollback_record"
-require_relative "../../../app/transaction/recovery/log_record"
 
 class RollbackRecordTest < Minitest::Test
   def setup

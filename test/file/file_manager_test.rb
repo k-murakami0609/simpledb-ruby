@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 require "minitest/autorun"
-require_relative "../../app/file/file_manager"
-require_relative "../../app/file/page"
-require_relative "../../app/file/block_id"
+require_relative "../../app/server/simple_db"
 
 class FileManagerTest < Minitest::Test
   def setup

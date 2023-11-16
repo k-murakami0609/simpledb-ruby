@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "lock_table"
+
 # transaction ごとにインスタンスが生成される
 # noinspection RubyClassVariableUsageInspection
 class ConcurrencyManager

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "operation_code"
-require_relative "update_record_helper"
 class SetStringRecord
   attr_reader :transaction_number
 
