@@ -2,6 +2,7 @@
 
 # Classes
 class SimpleDB
+  LOG_FILE: String
   attr_reader block_size: untyped
   attr_reader buffer_size: untyped
   attr_reader log_file: String

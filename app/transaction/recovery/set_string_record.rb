@@ -20,9 +20,9 @@ class SetStringRecord
   end
 
   def undo(transaction)
-    transaction.pin(block_id)
-    transaction.set_string(block_id, offset, value, false)
-    transaction.unpin(block_id)
+    transaction.pin(@block_id)
+    transaction.set_string(@block_id, @offset, @value, false)
+    transaction.unpin(@block_id)
   end
 
   # operation_code: 4 bytes

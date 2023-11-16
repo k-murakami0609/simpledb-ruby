@@ -7,12 +7,12 @@ class FileManager
 
   attr_reader block_size: untyped
   attr_reader is_new: bool
-  def initialize: (untyped db_directory, untyped block_size) -> void
-  def read: (untyped block_id, untyped page) -> String?
-  def write: (untyped block_id, untyped page) -> Integer
-  def append: (untyped file_name) -> untyped
-  def length: (untyped file_name) -> (Complex | Float | Integer | Rational)
+  def initialize: (String db_directory, Integer block_size) -> void
+  def read: (BlockId block_id, Page page) -> String?
+  def write: (BlockId block_id, Page page) -> Integer
+  def append: (String file_name) -> untyped
+  def length: (String file_name) -> Integer
 
   private
-  def get_file: (untyped file_name) -> File
+  def get_file: (String file_name) -> File
 end

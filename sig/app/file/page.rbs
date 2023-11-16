@@ -2,15 +2,17 @@
 
 # Classes
 class Page
+  CHARSET: String
+  BYTES_PER_UNIT: Integer
   @buffer: StringIO
 
   def initialize: (untyped arg) -> void
-  def get_int: (untyped offset) -> ((Float | Integer | String)?)
-  def set_int: (untyped offset, untyped n) -> Integer
-  def get_bytes: (untyped offset) -> Array[Integer]
-  def set_bytes: (untyped offset, untyped bytes) -> Integer
-  def get_string: (untyped offset) -> String
-  def set_string: (untyped offset, untyped str) -> Integer
-  def self.max_length: (untyped str) -> (Complex | Float | Integer | Rational)
+  def get_int: (Integer offset) -> Integer
+  def set_int: (Integer offset, untyped n) -> Integer
+  def get_bytes: (Integer offset) -> Array[Integer]
+  def set_bytes: (Integer offset, untyped bytes) -> Integer
+  def get_string: (Integer offset) -> String
+  def set_string: (Integer offset, String str) -> Integer
+  def self.max_length: (String str) -> Integer
   def contents: -> String
 end

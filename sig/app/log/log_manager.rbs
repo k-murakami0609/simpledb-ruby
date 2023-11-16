@@ -2,13 +2,15 @@
 
 # Classes
 class LogManager
+  INTEGER_SIZE: Integer
+
   attr_accessor file_manager: untyped
   attr_accessor log_file: untyped
   attr_accessor log_page: untyped
   attr_accessor current_block_id: untyped
   attr_accessor latest_lsn: Integer
   attr_accessor last_saved_lsn: Integer
-  def initialize: (untyped file_manager, untyped log_file) -> void
+  def initialize: (FileManager file_manager, String log_file) -> void
   def flush: (?nil lsn) -> Integer
   def iterator: -> untyped
   def append: (untyped log_record) -> Integer

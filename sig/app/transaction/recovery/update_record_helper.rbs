@@ -3,5 +3,5 @@
 # Classes
 class UpdateRecordHelper
   def self.get_file_name: (untyped page) -> untyped
-  def self.calc_positions: (untyped file_name) -> ({transaction_number_position: Integer, file_name_position: Integer, block_number_position: Complex | Float | Integer | Rational, offset_position: Complex | Float | Integer | Rational, value_position: Complex | Float | Integer | Rational})
+  def self.calc_positions: (untyped file_name) -> ({transaction_number_position: Integer, file_name_position: Integer, block_number_position: Integer, offset_position: Integer, value_position: Integer})
 end

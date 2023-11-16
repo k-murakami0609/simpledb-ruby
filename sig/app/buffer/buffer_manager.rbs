@@ -2,20 +2,22 @@
 
 # Classes
 class BufferManager
-  @buffer_pool: Array[untyped]
-  @num_available: untyped
+  MAX_TIME: Integer
+  
+  @buffer_pool: Array[Buffer]
+  @num_available: Integer
   @mutex: untyped
   @full: untyped
 
-  def initialize: (untyped file_manager, untyped log_manager, untyped number_buffers) -> void
-  def available: -> untyped
-  def flush_all: (untyped transaction_number) -> Array[untyped]
-  def unpin: (untyped buffer) -> nil
-  def pin: (untyped block_id) -> untyped
+  def initialize: (FileManager file_manager, LogManager log_manager, Integer number_buffers) -> void
+  def available: -> Integer
+  def flush_all: (Integer transaction_number) -> Array[untyped]
+  def unpin: (Buffer buffer) -> nil
+  def pin: (BlockId block_id) -> Buffer
 
   private
   def waiting_too_long: (Integer start_time) -> bool
-  def try_to_pin: (untyped block_id) -> nil
-  def find_existing_buffer: (untyped block_id) -> nil
-  def choose_unpinned_buffer: -> nil
+  def try_to_pin: (BlockId block_id) -> Buffer?
+  def find_existing_buffer: (BlockId block_id) -> Buffer?
+  def choose_unpinned_buffer: -> Buffer?
 end

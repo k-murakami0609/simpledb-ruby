@@ -2,6 +2,8 @@
 
 # Classes
 class LockTable
+  MAX_LOCKS: Integer
+
   @locks: Hash[untyped, Integer]
   @mutex: untyped
   @full: untyped
