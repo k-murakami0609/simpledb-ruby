@@ -1,0 +1,13 @@
+# TypeProf 0.21.8
+
+# Classes
+class BlockId
+  # `attr_accessor amount: Integer` in the case of Struct
+  attr_reader file_name: String
+
+  # `attr_accessor unit: String` in the case of Struct
+  attr_reader block_number: Integer
+
+  def initialize: (String file_name, Integer block_number) -> void
+    | (Integer block_number, String file_name) -> void
+end

@@ -1,0 +1,19 @@
+# TypeProf 0.21.8
+
+# Classes
+class LogIterator
+  include Enumerable
+  @file_manager: untyped
+  @page: untyped
+  @boundary: untyped
+  @currentpos: untyped
+
+  attr_accessor block_id: untyped
+  def initialize: (untyped file_manager, untyped block_id) -> void
+  def each: ?{ (untyped) -> untyped } -> ((Enumerator[bot, untyped] | Enumerator[untyped, untyped])?)
+  def next?: -> untyped
+  def next: -> untyped
+
+  private
+  def move_to_block: (untyped block_id) -> untyped
+end

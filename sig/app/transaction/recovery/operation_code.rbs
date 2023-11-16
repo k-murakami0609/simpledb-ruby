@@ -1,0 +1,11 @@
+# TypeProf 0.21.8
+
+# Classes
+class OperationCode
+  CHECKPOINT: Integer
+  START: Integer
+  COMMIT: Integer
+  ROLLBACK: Integer
+  SET_INT: Integer
+  SET_STRING: Integer
+end

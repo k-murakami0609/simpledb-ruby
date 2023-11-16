@@ -1,0 +1,14 @@
+# TypeProf 0.21.8
+
+# Classes
+class BufferList
+  @buffers: Hash[untyped, untyped]
+  @pins: Array[untyped]
+  @buffer_manager: untyped
+
+  def initialize: (untyped buffer_manager) -> void
+  def get_buffer: (untyped block_id) -> nil
+  def pin: (untyped block_id) -> Array[untyped]
+  def unpin: (untyped block_id) -> nil
+  def unpin_all: -> Array[untyped]
+end

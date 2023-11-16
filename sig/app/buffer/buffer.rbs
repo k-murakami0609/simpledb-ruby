@@ -1,0 +1,21 @@
+# TypeProf 0.21.8
+
+# Classes
+class Buffer
+  @file_manager: untyped
+  @log_manager: untyped
+
+  attr_accessor contents: untyped
+  attr_accessor block_id: nil
+  attr_accessor pins: Integer
+  attr_accessor transaction_number: Integer
+  attr_accessor lsn: Integer
+  def initialize: (untyped file_manager, untyped log_manager) -> void
+  def set_modified: (untyped transaction_number, untyped lsn) -> nil
+  def pinned?: -> bool
+  def modifying_tx: -> Integer
+  def assign_to_block: (untyped b) -> Integer
+  def flush: -> Integer?
+  def pin: -> Integer
+  def unpin: -> Integer
+end

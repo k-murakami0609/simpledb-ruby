@@ -1,0 +1,21 @@
+# TypeProf 0.21.8
+
+# Classes
+class LockTable
+  MAX_LOCKS: Integer
+
+  @locks: Hash[untyped, Integer]
+  @mutex: untyped
+  @full: untyped
+
+  def initialize: -> void
+  def s_lock: (untyped block_id) -> untyped
+  def x_lock: (untyped block_id) -> untyped
+  def unlock: (untyped block_id) -> Integer
+
+  private
+  def x_lock?: (untyped block_id) -> bool
+  def other_s_lock?: (untyped block_id) -> bool
+  def get_lock_value: (untyped block_id) -> Integer
+  def waiting_too_long: (Integer start_time) -> bool
+end

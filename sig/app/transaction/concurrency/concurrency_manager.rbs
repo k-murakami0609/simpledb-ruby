@@ -1,0 +1,21 @@
+# TypeProf 0.21.8
+
+# Classes
+class ConcurrencyManager
+  @locks: Hash[untyped, String]
+  @@lock_table: LockTable
+
+  def self.lock_table: -> LockTable
+  def initialize: -> void
+  def s_lock: (untyped block_id) -> String?
+  def x_lock: (untyped block_id) -> String?
+  def release: -> Hash[untyped, String]
+
+  private
+  def x_lock?: (untyped block_id) -> bool
+end
+
+module LockType
+  X_LOCK: String
+  S_LOCK: String
+end

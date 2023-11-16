@@ -1,0 +1,30 @@
+# TypeProf 0.21.8
+
+# Classes
+class Transaction
+  END_OF_FILE: Integer
+
+  @file_manager: untyped
+  @buffer_manager: untyped
+  @transaction_number: Integer
+  @recovery_manager: untyped
+  @concurrency_manager: untyped
+  @buffers: untyped
+  @@next_tx_num: Integer
+
+  def self.next_tx_number: -> Integer
+  def initialize: (FileManager file_manager, LogManager log_manager, BufferManager buffer_manager) -> void
+  def commit: -> untyped
+  def rollback: -> untyped
+  def recover: -> untyped
+  def pin: (BlockId block_id) -> untyped
+  def unpin: (BlockId block_id) -> untyped
+  def get_int: (BlockId block_id, Integer offset) -> untyped
+  def get_string: (BlockId block_id, Integer offset) -> untyped
+  def set_int: (BlockId block_id, Integer offset, Integer value, bool ok_to_log) -> untyped
+  def set_string: (BlockId block_id, Integer offset, String value, bool ok_to_log) -> untyped
+  def size: (untyped file_name) -> untyped
+  def append: (untyped file_name) -> untyped
+  def block_size: -> untyped
+  def available_buffs: -> untyped
+end

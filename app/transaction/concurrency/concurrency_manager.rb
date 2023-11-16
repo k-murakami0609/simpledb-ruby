@@ -11,11 +11,6 @@ class ConcurrencyManager
     @@lock_table
   end
 
-  module LockType
-    X_LOCK = "X"
-    S_LOCK = "S"
-  end
-
   def initialize
     @locks = {}
   end
@@ -48,4 +43,9 @@ class ConcurrencyManager
   def x_lock?(block_id)
     @locks[block_id].equal?(LockType::X_LOCK)
   end
+end
+
+module LockType
+  X_LOCK = "X"
+  S_LOCK = "S"
 end

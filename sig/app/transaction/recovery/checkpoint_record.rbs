@@ -1,0 +1,11 @@
+# TypeProf 0.21.8
+
+# Classes
+class CheckpointRecord
+  @operation_code: untyped
+
+  attr_accessor transaction_number: Integer
+  def initialize: (untyped page) -> void
+  def to_s: -> String
+  def self.write_to_log: (untyped log_manager) -> untyped
+end

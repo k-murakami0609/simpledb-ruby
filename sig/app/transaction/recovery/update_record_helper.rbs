@@ -1,0 +1,7 @@
+# TypeProf 0.21.8
+
+# Classes
+class UpdateRecordHelper
+  def self.get_file_name: (untyped page) -> untyped
+  def self.calc_positions: (untyped file_name) -> ({transaction_number_position: Integer, file_name_position: Integer, block_number_position: Integer, offset_position: Integer, value_position: Integer})
+end
