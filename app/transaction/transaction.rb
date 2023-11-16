@@ -16,7 +16,7 @@ class Transaction
     @transaction_number = self.class.next_tx_number
     @recovery_manager = RecoveryManager.new(self, @transaction_number, log_manager, buffer_manager)
     @concurrency_manager = ConcurrencyManager.new
-    @buffers = BufferList.new(bm)
+    @buffers = BufferList.new(buffer_manager)
   end
 
   def commit
