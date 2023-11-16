@@ -46,24 +46,24 @@ class RecoveryManager
   end
 
   def do_rollback
-    @log_manager.iterator do |record_bytes|
+    @log_manager.iterator.each do |record_bytes|
       record = LogRecord.create_log_record(record_bytes)
       if record.transaction_number != @transaction_number
         next
       end
 
-      if record.type == :start
+      if record.operation_code == :start
         break
       end
 
-      record.undo(@transaction)
+      record.undo(@transaction) if record.respond_to?(:undo)
     end
   end
 
   def do_recover
     # TODO: Set のほうが早いかも？
     finished_transactions = []
-    @log_manager.iterator do |record_bytes|
+    @log_manager.iterator.each do |record_bytes|
       record = LogRecord.create_log_record(record_bytes)
       if record.type == :checkpoint
         break

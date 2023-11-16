@@ -5,9 +5,9 @@ class SetStringRecord
   @block_id: untyped
   @offset: untyped
   @value: untyped
-  @operation_code: untyped
 
-  attr_reader transaction_number: untyped
+  attr_reader transaction_number: Integer
+  attr_reader operation_code: Integer
   def initialize: (untyped page) -> void
   def to_s: -> String
   def undo: (Transaction transaction) -> untyped

@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class StartRecord
-  attr_accessor :transaction_number, :operation_code
+  attr_reader :transaction_number, :operation_code
+
   def initialize(page)
     @transaction_number = page.get_int(4)
     @operation_code = OperationCode::START

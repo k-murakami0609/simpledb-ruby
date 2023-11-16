@@ -21,14 +21,12 @@ class Transaction
 
   def commit
     @recovery_manager.commit
-    puts "transaction #{@transaction_number} committed"
     @concurrency_manager.release
     @buffers.unpin_all
   end
 
   def rollback
     @recovery_manager.rollback
-    puts "transaction #{@transaction_number} rolled back"
     @concurrency_manager.release
     @buffers.unpin_all
   end
@@ -49,18 +47,24 @@ class Transaction
   def get_int(block_id, offset)
     @concurrency_manager.s_lock(block_id)
     buffer = @buffers.get_buffer(block_id)
+    throw "buffer is null" unless buffer
+
     buffer.contents.get_int(offset)
   end
 
   def get_string(block_id, offset)
     @concurrency_manager.s_lock(block_id)
     buffer = @buffers.get_buffer(block_id)
+    throw "buffer is null" unless buffer
+
     buffer.contents.get_string(offset)
   end
 
   def set_int(block_id, offset, value, ok_to_log)
     @concurrency_manager.x_lock(block_id)
     buffer = @buffers.get_buffer(block_id)
+    throw "buffer is null" unless buffer
+
     lsn = -1
     lsn = @recovery_manager.set_int(buffer, offset, value) if ok_to_log
     page = buffer.contents
@@ -71,6 +75,8 @@ class Transaction
   def set_string(block_id, offset, value, ok_to_log)
     @concurrency_manager.x_lock(block_id)
     buffer = @buffers.get_buffer(block_id)
+    throw "buffer is null" unless buffer
+
     lsn = -1
     lsn = @recovery_manager.set_string(buffer, offset, value) if ok_to_log
     page = buffer.contents
