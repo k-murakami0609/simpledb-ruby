@@ -9,3 +9,5 @@ gem "rake"
 gem "rubocop", group: "development", require: false
 gem "standard", group: "development", require: false
 gem "values"
+
+gem "require_all"

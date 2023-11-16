@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "buffer"
 class BufferManager
   MAX_TIME = 10_000 # 10 seconds
 

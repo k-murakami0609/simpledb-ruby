@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../file/file_manager"
-require_relative "../log/log_manager"
-require_relative "../buffer/buffer_manager"
+require "require_all"
+require_all Dir.glob("app/**/*.rb").reject { |f| f.include?("app/server/simple_db.rb") }
+
 class SimpleDB
   LOG_FILE = "simpledb.log"
 

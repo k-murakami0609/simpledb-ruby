@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "operation_code"
 class CommitRecord
   attr_reader :transaction_number, :operation_code
   def initialize(page)
