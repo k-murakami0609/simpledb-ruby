@@ -7,6 +7,10 @@ require_relative "lock_table"
 class ConcurrencyManager
   @@lock_table = LockTable.new
 
+  def self.lock_table
+    @@lock_table
+  end
+
   module LockType
     X_LOCK = "X"
     S_LOCK = "S"

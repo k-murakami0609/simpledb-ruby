@@ -11,3 +11,4 @@ gem "standard", group: "development", require: false
 gem "values"
 
 gem "require_all"
+gem "timecop"

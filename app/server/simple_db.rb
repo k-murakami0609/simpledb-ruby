@@ -18,7 +18,7 @@ class SimpleDB
     @buffer_manager = BufferManager.new(@file_manager, @log_manager, buffer_size)
   end
 
-  # def new_transaction
-  #   Transaction.new(file_manager, log_manager, buffer_manager)
-  # end
+  def new_transaction
+    Transaction.new(@file_manager, @log_manager, @buffer_manager)
+  end
 end
