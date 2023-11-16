@@ -59,10 +59,10 @@ class LockTable
   end
 
   def get_lock_value(block_id)
-    @locks[block_id]&.value || 0
+    @locks[block_id] || 0
   end
 
   def waiting_too_long(start_time)
-    (Time.now.to_i * 1000) - start_time > MAX_TIME
+    (Time.now.to_i * 1000) - start_time > MAX_LOCKS
   end
 end

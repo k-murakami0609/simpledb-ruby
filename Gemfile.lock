@@ -48,6 +48,7 @@ GEM
     standard-performance (1.2.1)
       lint_roller (~> 1.1)
       rubocop-performance (~> 1.19.1)
+    timecop (0.9.8)
     unicode-display_width (2.4.2)
     values (1.8.0)
 
@@ -63,6 +64,7 @@ DEPENDENCIES
   require_all
   rubocop
   standard
+  timecop
   values
 
 BUNDLED WITH
