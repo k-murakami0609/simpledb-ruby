@@ -20,9 +20,9 @@ class ConcurrencyManagerTest < Minitest::Test
   def test_lock_table
     concurrency_manager1 = ConcurrencyManager.new
     concurrency_manager2 = ConcurrencyManager.new
-    block_id1 = BlockId.new("test1", 0)
-    block_id2 = BlockId.new("test1", 1)
-    block_id3 = BlockId.new("test2", 0)
+    block_id1 = BlockId.new("lock_table_test1", 0)
+    block_id2 = BlockId.new("lock_table_test1", 1)
+    block_id3 = BlockId.new("lock_table_test2", 0)
 
     concurrency_manager1.s_lock(block_id1)
     concurrency_manager1.s_lock(block_id1)
@@ -65,13 +65,16 @@ class ConcurrencyManagerTest < Minitest::Test
     assert_equal locks_tables.send(:get_lock_value, block_id1), 0
     assert_equal locks_tables.send(:get_lock_value, block_id2), 0
     assert_equal locks_tables.send(:get_lock_value, block_id3), 0
+
+    concurrency_manager1.release
+    concurrency_manager2.release
   end
 
   def test_concurrency
     concurrency_manager1 = ConcurrencyManager.new
     concurrency_manager2 = ConcurrencyManager.new
 
-    block_id1 = BlockId.new("test1", 0)
+    block_id1 = BlockId.new("concurrency_test1", 0)
 
     threads = []
     threads.push(Thread.new do

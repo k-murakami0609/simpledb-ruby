@@ -4,10 +4,10 @@
 class LogManager
   INTEGER_SIZE: Integer
 
-  attr_accessor file_manager: untyped
-  attr_accessor log_file: untyped
-  attr_accessor log_page: untyped
-  attr_accessor current_block_id: untyped
+  attr_accessor file_manager: FileManager
+  attr_accessor log_file: String
+  attr_accessor log_page: Page
+  attr_accessor current_block_id: BlockId
   attr_accessor latest_lsn: Integer
   attr_accessor last_saved_lsn: Integer
   def initialize: (FileManager file_manager, String log_file) -> void

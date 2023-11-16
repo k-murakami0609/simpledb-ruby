@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SetStringRecord
-  attr_reader :transaction_number
+  attr_reader :transaction_number, :operation_code
 
   def initialize(page)
     file_name = UpdateRecordHelper.get_file_name(page)

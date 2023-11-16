@@ -2,13 +2,13 @@
 
 # Classes
 class BufferList
-  @buffers: Hash[untyped, untyped]
-  @pins: Array[untyped]
-  @buffer_manager: untyped
+  @buffers: Hash[BlockId, Buffer]
+  @pins: Array[BlockId]
+  @buffer_manager: BufferManager
 
-  def initialize: (untyped buffer_manager) -> void
-  def get_buffer: (untyped block_id) -> nil
-  def pin: (untyped block_id) -> Array[untyped]
-  def unpin: (untyped block_id) -> nil
+  def initialize: (BufferManager buffer_manager) -> void
+  def get_buffer: (BlockId block_id) -> Buffer?
+  def pin: (BlockId block_id) -> Array[untyped]
+  def unpin: (BlockId block_id) -> nil
   def unpin_all: -> Array[untyped]
 end

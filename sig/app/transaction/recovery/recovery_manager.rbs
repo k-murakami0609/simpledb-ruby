@@ -7,12 +7,12 @@ class RecoveryManager
   @log_manager: untyped
   @buffer_manager: untyped
 
-  def initialize: (untyped transaction, untyped transaction_number, untyped log_manager, untyped buffer_manager) -> void
+  def initialize: (Transaction transaction, Integer transaction_number, LogManager log_manager, BufferManager buffer_manager) -> void
   def commit: -> untyped
   def rollback: -> untyped
   def recover: -> untyped
-  def set_int: (untyped buffer, untyped offset, untyped new_value) -> untyped
-  def set_string: (untyped buffer, untyped offset, untyped new_value) -> untyped
+  def set_int: (Buffer buffer, Integer offset, Integer new_value) -> untyped
+  def set_string: (Buffer buffer, Integer offset, String new_value) -> untyped
   def do_rollback: -> nil
   def do_recover: -> nil
 end

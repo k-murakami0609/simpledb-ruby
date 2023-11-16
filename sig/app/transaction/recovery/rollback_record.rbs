@@ -2,8 +2,8 @@
 
 # Classes
 class RollbackRecord
-  attr_accessor transaction_number: untyped
-  attr_accessor operation_code: untyped
+  attr_reader transaction_number: Integer
+  attr_reader operation_code: Integer
   def initialize: (untyped page) -> void
   def to_s: -> String
   def self.write_to_log: (untyped log_manager, untyped transaction_number) -> untyped

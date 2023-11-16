@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CheckpointRecord
-  attr_accessor :transaction_number
+  attr_reader :transaction_number, :operation_code
   def initialize(page)
     @operation_code = OperationCode::CHECKPOINT
     @transaction_number = -1
