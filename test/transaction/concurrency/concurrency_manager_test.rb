@@ -76,13 +76,12 @@ class ConcurrencyManagerTest < Minitest::Test
     threads = []
     threads.push(Thread.new do
       concurrency_manager1.s_lock(block_id1)
+      concurrency_manager1.release
     end)
     threads.push(Thread.new do
       sleep(1)
       concurrency_manager2.x_lock(block_id1)
     end)
-
-    concurrency_manager1.release
 
     threads.each { |t| t.join }
 
