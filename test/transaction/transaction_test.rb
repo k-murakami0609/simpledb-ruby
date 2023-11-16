@@ -15,23 +15,28 @@ class TransactionTest < Minitest::Test
   end
 
   def test_transaction
-    transaction = @simple_db.new_transaction
-    block_id = BlockId.new("test", 0)
+    simple_db = SimpleDB.new("./tmp/transaction/transaction", 100, 8)
+
+    transaction = simple_db.new_transaction
+    transaction_number = transaction.instance_variable_get(:@transaction_number)
+
+    block_id = BlockId.new("transaction_test", 0)
 
     transaction.pin(block_id)
     transaction.set_int(block_id, 0, 10, false)
     transaction.commit
 
-    iter = @simple_db.log_manager.iterator
+    iter = simple_db.log_manager.iterator
     record1 = LogRecord.create_log_record(iter.next)
-    assert_equal record1.to_s, "<COMMIT 1>"
+    assert_equal record1.to_s, "<COMMIT #{transaction_number}>"
 
     record2 = LogRecord.create_log_record(iter.next)
-    assert_equal record2.to_s, "<START 1>"
+    assert_equal record2.to_s, "<START #{transaction_number}>"
   end
 
   def test_transaction2
-    transaction1 = @simple_db.new_transaction
+    simple_db = SimpleDB.new("./tmp/transaction/transaction2", 100, 8)
+    transaction1 = simple_db.new_transaction
     block_id = BlockId.new("testfile", 1)
 
     transaction1.pin(block_id)
@@ -39,7 +44,7 @@ class TransactionTest < Minitest::Test
     transaction1.set_string(block_id, 40, "one", false)
     transaction1.commit
 
-    transaction2 = @simple_db.new_transaction
+    transaction2 = simple_db.new_transaction
     transaction2.pin(block_id)
     assert_equal transaction2.get_int(block_id, 80), 1, "initial value at location 80"
     assert_equal transaction2.get_string(block_id, 40), "one", "initial value at location 40"
@@ -48,7 +53,7 @@ class TransactionTest < Minitest::Test
     transaction2.set_string(block_id, 40, "one!", true)
     transaction2.commit
 
-    transaction3 = @simple_db.new_transaction
+    transaction3 = simple_db.new_transaction
     transaction3.pin(block_id)
     assert_equal transaction3.get_int(block_id, 80), 2, "new value at location 80"
     assert_equal transaction3.get_string(block_id, 40), "one!", "new value at location 40"
@@ -57,7 +62,7 @@ class TransactionTest < Minitest::Test
     assert_equal transaction3.get_int(block_id, 80), 9999, "pre-rollback value at location 80"
     transaction3.rollback
 
-    transaction4 = @simple_db.new_transaction
+    transaction4 = simple_db.new_transaction
     transaction4.pin(block_id)
     assert_equal transaction4.get_int(block_id, 80), 2, "post-rollback value at location 80"
     transaction4.commit
