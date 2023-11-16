@@ -1,0 +1,3 @@
+bundle exec rake
+gh pr create -w
+gh pr view -w
