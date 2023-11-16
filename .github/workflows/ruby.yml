@@ -42,4 +42,5 @@ jobs:
         rubocop_version: gemfile
         reporter: github-pr-review # Default is github-pr-check
         rubocop_extensions: standard:gemfile
-
+    - name: steep check
+      uses: tk0miya/action-steep@v1

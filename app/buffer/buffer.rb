@@ -26,10 +26,10 @@ class Buffer
     @transaction_number
   end
 
-  def assign_to_block(b)
+  def assign_to_block(block_id)
     flush
-    @block_id = b
-    @file_manager.read(@block_id, @contents)
+    @block_id = block_id
+    @file_manager.read(block_id, @contents)
     @pins = 0
   end
 
@@ -37,7 +37,9 @@ class Buffer
     return unless @transaction_number >= 0
 
     @log_manager.flush(@lsn)
-    @file_manager.write(@block_id, @contents)
+    block_id = @block_id
+    throw "block_id is null. but flush" unless block_id
+    @file_manager.write(block_id, @contents)
     @transaction_number = -1
   end
 
