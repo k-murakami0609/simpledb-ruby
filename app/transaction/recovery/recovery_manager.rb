@@ -36,12 +36,14 @@ class RecoveryManager
   def set_int(buffer, offset, new_value)
     old_val = buffer.contents.get_int(offset)
     block_id = buffer.block_id
+    throw "block_id is null" unless block_id
     SetIntRecord.write_to_log(@log_manager, @transaction_number, block_id, offset, old_val)
   end
 
   def set_string(buffer, offset, new_value)
     old_val = buffer.contents.get_string(offset)
     block_id = buffer.block_id
+    throw "block_id is null" unless block_id
     SetStringRecord.write_to_log(@log_manager, @transaction_number, block_id, offset, old_val)
   end
 

@@ -2,7 +2,9 @@
 
 # Classes
 class LogIterator
-  include Enumerable
+  include Enumerable[untyped]
+  INTEGER_SIZE: Integer
+
   @file_manager: untyped
   @page: untyped
   @boundary: untyped

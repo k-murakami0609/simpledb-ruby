@@ -1,3 +1,4 @@
 bundle exec rake
+steep check
 gh pr create -w
 gh pr view -w

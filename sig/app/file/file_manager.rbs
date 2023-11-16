@@ -2,10 +2,10 @@
 
 # Classes
 class FileManager
-  @db_directory: untyped
+  @db_directory: String
   @open_files: Hash[untyped, File]
 
-  attr_reader block_size: untyped
+  attr_reader block_size: Integer
   attr_reader is_new: bool
   def initialize: (String db_directory, Integer block_size) -> void
   def read: (BlockId block_id, Page page) -> String?

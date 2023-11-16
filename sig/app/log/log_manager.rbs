@@ -11,7 +11,7 @@ class LogManager
   attr_accessor latest_lsn: Integer
   attr_accessor last_saved_lsn: Integer
   def initialize: (FileManager file_manager, String log_file) -> void
-  def flush: (?nil lsn) -> Integer
+  def flush: (?(Integer | nil) lsn) -> (Integer | nil)
   def iterator: -> untyped
   def append: (untyped log_record) -> Integer
 
