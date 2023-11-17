@@ -22,7 +22,7 @@ class TableScan
     @current_slot = @record_page.next_after(@current_slot)
     while @current_slot < 0
       return false if at_last_block?
-      move_to_block(@record_page.block_id.block_number + 1)
+      @record_page = move_to_block(@record_page.block_id.block_number + 1)
       @current_slot = @record_page.next_after(@current_slot)
     end
     true
