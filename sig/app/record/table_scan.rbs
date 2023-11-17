@@ -1,0 +1,31 @@
+# TypeProf 0.21.8
+
+# Classes
+class TableScan
+  @transaction: Transaction
+  @layout: Layout
+  @file_name: String
+  @record_page: RecordPage
+
+  attr_reader current_slot: Integer
+  def initialize: (Transaction transaction, String table_name, Layout layout) -> void
+  def before_first: -> untyped
+  def next: -> bool
+  def get_int: (String field_name) -> untyped
+  def get_string: (String field_name) -> untyped
+  def get_val: (String field_name) -> untyped
+  def has_field?: (String field_name) -> untyped
+  def close: -> nil
+  def set_int: (String field_name, Integer val) -> untyped
+  def set_string: (String field_name, String val) -> untyped
+  def set_val: (String field_name, untyped val) -> untyped
+  def insert: -> nil
+  def delete: -> untyped
+  def move_to_rid: (RecordId rid) -> untyped
+  def get_rid: -> RecordId?
+
+  private
+  def move_to_block: (Integer block_number) -> RecordPage
+  def move_to_new_block: -> RecordPage
+  def at_last_block?: -> bool
+end

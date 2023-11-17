@@ -31,7 +31,7 @@ class Schema
     schema.field_names.each { |field_name| add(field_name, schema) }
   end
 
-  def has_field(field_name)
+  def has_field?(field_name)
     @field_names.include?(field_name)
   end
 
