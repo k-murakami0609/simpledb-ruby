@@ -1,0 +1,10 @@
+# TypeProf 0.21.8
+
+# Classes
+class ViewManager
+  MAX_VIEW_DEF: Integer
+  attr_accessor table_manager: TableManager
+  def initialize: (bool is_new, TableManager table_manager, Transaction transaction) -> void
+  def create_view: (String view_name, String view_def, Transaction transaction) -> untyped
+  def get_view_def: (String view_name, Transaction transaction) -> nil
+end

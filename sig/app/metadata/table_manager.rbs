@@ -1,0 +1,11 @@
+# TypeProf 0.21.8
+
+# Classes
+class TableManager
+  MAX_NAME: Integer
+  attr_accessor table_catalog_layout: untyped
+  attr_accessor field_catalog_layout: untyped
+  def initialize: (untyped is_new, untyped transaction) -> void
+  def create_table: (String table_name, untyped schema, untyped transaction) -> untyped
+  def get_layout: (untyped table_name, untyped transaction) -> untyped
+end

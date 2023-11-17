@@ -1,0 +1,21 @@
+# TypeProf 0.21.8
+
+# Classes
+class StatManager
+  @table_manager: TableManager
+  @table_stats: Hash[String, StatInfo]
+  @num_calls: Integer
+
+  def initialize: (TableManager table_manager, Transaction transaction) -> void
+  def get_stat_info: (String table_name, Layout layout, Transaction transaction) -> StatInfo
+
+  private
+  def refresh_statistics: (Transaction transaction) -> untyped
+  def calculate_table_stats: (String table_name, Layout layout, Transaction transaction) -> StatInfo
+end
+
+class StatInfo
+  attr_accessor num_blocks: Integer
+  attr_accessor num_records: Integer
+  def initialize: (Integer num_blocks, Integer num_records) -> void
+end
