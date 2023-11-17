@@ -10,7 +10,7 @@ class TableScan
   attr_reader current_slot: Integer
   def initialize: (Transaction transaction, String table_name, Layout layout) -> void
   def before_first: -> untyped
-  def next: -> bool
+  def next?: -> bool
   def get_int: (String field_name) -> untyped
   def get_string: (String field_name) -> untyped
   def get_val: (String field_name) -> untyped
