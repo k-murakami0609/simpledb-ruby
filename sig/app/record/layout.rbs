@@ -1,0 +1,15 @@
+# TypeProf 0.21.8
+
+# Classes
+class Layout
+  INTEGER_BYTE_SIZE: Integer
+
+  attr_reader schema: Schema
+  attr_reader name_to_offset: Hash[String, Integer]
+  attr_reader slot_size: Integer
+  def initialize: (Schema schema, ?Hash[String, Integer] name_to_offset, ?Integer slot_size) -> void
+  def offset: (String field_name) -> Integer?
+
+  private
+  def length_in_bytes: (String field_name) -> Integer
+end

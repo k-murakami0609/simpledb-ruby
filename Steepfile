@@ -23,7 +23,7 @@
 target :app do
   signature "sig"
   check "app"
-  library "pathname", "json", "logger", "monitor", "tsort", "uri", "dbm", "pstore", "singleton", "shellwords", "fileutils", "find", "digest", "abbrev", "prettyprint"
+  library "fileutils"
 
   ignore(
     "app/file/page.rb",

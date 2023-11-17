@@ -1,0 +1,29 @@
+# TypeProf 0.21.8
+
+# Classes
+class RecordPage
+  @transaction: untyped
+  @layout: untyped
+
+  attr_reader block_id: BlockId
+  def initialize: (Transaction transaction, BlockId block_id, Layout layout) -> void
+  def get_int: (Integer slot, String field_name) -> untyped
+  def get_string: (Integer slot, String field_name) -> untyped
+  def set_int: (Integer slot, String field_name, Integer value) -> untyped
+  def set_string: (Integer slot, String field_name, String value) -> untyped
+  def delete: (Integer slot) -> untyped
+  def format: -> nil
+  def next_after: (Integer slot) -> Integer
+  def insert_after: (Integer slot) -> Integer
+
+  private
+  def set_slot_state: (Integer slot, Integer state) -> untyped
+  def search_after: (Integer slot, Integer state) -> Integer
+  def valid_slot?: (Integer slot) -> bool
+  def offset: (Integer slot) -> (Complex | Float | Integer | Rational)
+
+  module SlotState
+    EMPTY: Integer
+    USED: Integer
+  end
+end
