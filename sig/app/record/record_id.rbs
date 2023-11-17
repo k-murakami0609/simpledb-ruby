@@ -1,0 +1,13 @@
+# TypeProf 0.21.8
+
+# Classes
+class RecordId
+  # `attr_accessor amount: Integer` in the case of Struct
+  attr_reader slot: Integer
+
+  # `attr_accessor unit: String` in the case of Struct
+  attr_reader block_number: Integer
+
+  def initialize: (Integer slot, Integer block_number) -> void
+    | (Integer block_number, Integer slot) -> void
+end
