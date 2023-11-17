@@ -110,7 +110,7 @@ class TableScan
     close
     block_id = @transaction.append(@file_name)
     record_page = RecordPage.new(@transaction, block_id, @layout)
-    @record_page.format
+    record_page.format
     @current_slot = -1
 
     record_page
