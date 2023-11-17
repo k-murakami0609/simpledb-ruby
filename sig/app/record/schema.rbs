@@ -11,7 +11,7 @@ class Schema
   def add_string_field: (String field_name, Integer length) -> FieldInfo
   def add: (String field_name, Schema schema) -> FieldInfo
   def add_all: (Schema schema) -> untyped
-  def has_field: (String field_name) -> bool
+  def has_field?: (String field_name) -> bool
   def type: (String field_name) -> (:integer | :varchar)
   def length: (String field_name) -> Integer
 
