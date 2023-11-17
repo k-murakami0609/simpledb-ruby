@@ -18,7 +18,7 @@ class TableScan
     @record_page = move_to_block(0)
   end
 
-  def next
+  def next?
     @current_slot = @record_page.next_after(@current_slot)
     while @current_slot < 0
       return false if at_last_block?
@@ -69,10 +69,6 @@ class TableScan
   end
 
   def insert
-    if @record_page.nil?
-      throw "RecordPage is nil."
-    end
-
     @current_slot = @record_page.insert_after(@current_slot)
     while @current_slot < 0
       @record_page = if at_last_block?
@@ -96,10 +92,6 @@ class TableScan
   end
 
   def get_rid
-    if @record_page.nil?
-      throw "RecordPage is nil."
-    end
-
     RecordId.new(@record_page.block_id.block_number, @current_slot)
   end
 
