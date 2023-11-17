@@ -49,7 +49,7 @@ class RecordPage
     while valid_slot?(slot)
       @transaction.set_int(@block_id, offset(slot), SlotState::EMPTY, false)
       schema = @layout.schema
-      schema.fields.each do |field_name|
+      schema.field_names.each do |field_name|
         field_position = offset(slot) + @layout.offset(field_name)
         case schema.type(field_name)
         when :integer
