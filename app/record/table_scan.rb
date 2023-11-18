@@ -84,14 +84,14 @@ class TableScan
     @record_page.delete(@current_slot)
   end
 
-  def move_to_rid(rid)
+  def move_to_record_id(record_id)
     close
-    block_id = BlockId.new(@file_name, rid.block_number)
+    block_id = BlockId.new(@file_name, record_id.block_number)
     @record_page = RecordPage.new(@transaction, block_id, @layout)
-    @current_slot = rid.slot
+    @current_slot = record_id.slot
   end
 
-  def get_rid
+  def get_record_id
     RecordId.new(@record_page.block_id.block_number, @current_slot)
   end
 
