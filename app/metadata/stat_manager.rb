@@ -55,4 +55,16 @@ class StatInfo
     @num_blocks = num_blocks
     @num_records = num_records
   end
+
+  def block_accessed
+    @num_blocks
+  end
+
+  def records_output
+    @num_records
+  end
+
+  def distinct_values(field_name)
+    1 + (@num_records / 3)
+  end
 end
