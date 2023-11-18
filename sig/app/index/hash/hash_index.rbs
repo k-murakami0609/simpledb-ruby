@@ -1,0 +1,18 @@
+# TypeProf 0.21.8
+
+# Classes
+class HashIndex
+  attr_accessor transaction: Transaction
+  attr_accessor index_name: String
+  attr_accessor layout: Layout
+  attr_accessor search_key: String
+  attr_accessor table_scan: TableScan
+  def initialize: (Transaction transaction, String index_name, Layout layout) -> void
+  def before_first: (String search_key) -> untyped
+  def next: -> bool
+  def get_data_rid: -> RecordId
+  def insert: (String val, RecordId rid) -> untyped
+  def delete: (String val, RecordId rid) -> nil
+  def close: -> untyped
+  def self.search_cost: (Integer num_blocks, Integer records_per_block) -> untyped
+end
