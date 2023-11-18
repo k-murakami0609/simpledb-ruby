@@ -1,0 +1,13 @@
+# TypeProf 0.21.8
+
+# Classes
+class IndexManager
+  MAX_NAME: Integer
+
+  attr_accessor layout: untyped
+  attr_accessor table_manager: untyped
+  attr_accessor stat_manager: untyped
+  def initialize: (untyped is_new, untyped table_manager, untyped stat_manager, untyped transaction) -> void
+  def create_index: (untyped index_name, untyped table_name, untyped field_name, untyped transaction) -> untyped
+  def get_index_info: (untyped table_name, untyped transaction) -> Hash[untyped, untyped]
+end

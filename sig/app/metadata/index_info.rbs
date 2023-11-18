@@ -1,0 +1,19 @@
+# TypeProf 0.21.8
+
+# Classes
+class IndexInfo
+  attr_accessor index_name: String
+  attr_accessor field_name: String
+  attr_accessor transaction: Transaction
+  attr_accessor table_schema: Schema
+  attr_accessor index_layout: Layout
+  attr_accessor stat_info: StatInfo
+  def initialize: (String index_name, String field_name, Schema table_schema, Transaction transaction, StatInfo stat_info) -> void
+  def open: -> untyped
+  def blocks_accessed: -> Integer
+  def records_output: -> Integer
+  def distinct_values: (String field_name) -> Integer
+
+  private
+  def create_index_layout: -> Layout
+end
