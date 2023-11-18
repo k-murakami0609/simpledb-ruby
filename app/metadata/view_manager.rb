@@ -11,7 +11,7 @@ class ViewManager
       schema = Schema.new
       schema.add_string_field("viewName", TableManager::MAX_NAME)
       schema.add_string_field("viewDef", MAX_VIEW_DEF)
-      @table_manager.create_table("viewcat", schema, transaction)
+      @table_manager.create_table("viewCatalog", schema, transaction)
     end
   end
 
