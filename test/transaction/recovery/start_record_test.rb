@@ -16,7 +16,7 @@ class StartRecordTest < Minitest::Test
     # Do nothing
   end
 
-  def test_iterator
+  def test_start_record
     StartRecord.write_to_log(@log_manager, 1)
     iter = @log_manager.iterator
     record = LogRecord.create_log_record(iter.next)

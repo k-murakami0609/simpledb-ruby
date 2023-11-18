@@ -16,7 +16,7 @@ class RollbackRecordTest < Minitest::Test
     # Do nothing
   end
 
-  def test_iterator
+  def test_rollback_record
     RollbackRecord.write_to_log(@log_manager, 1)
     iter = @log_manager.iterator
     record = LogRecord.create_log_record(iter.next)

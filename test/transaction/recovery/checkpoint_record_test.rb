@@ -16,7 +16,7 @@ class CheckpointRecordTest < Minitest::Test
     # Do nothing
   end
 
-  def test_iterator
+  def test_checkpoint_record
     CheckpointRecord.write_to_log(@log_manager)
     iter = @log_manager.iterator
     record = LogRecord.create_log_record(iter.next)

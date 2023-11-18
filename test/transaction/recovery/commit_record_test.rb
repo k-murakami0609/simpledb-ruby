@@ -4,7 +4,7 @@ require "minitest/autorun"
 
 require_relative "../../../app/server/simple_db"
 
-class CheckpointRecordTest < Minitest::Test
+class CommitRecordTest < Minitest::Test
   def setup
     # Do nothing
     FileUtils.rm_rf("./tmp/commit_record")
@@ -16,7 +16,7 @@ class CheckpointRecordTest < Minitest::Test
     # Do nothing
   end
 
-  def test_iterator
+  def test_commit_record
     CommitRecord.write_to_log(@log_manager, 2)
     iter = @log_manager.iterator
     record = LogRecord.create_log_record(iter.next)

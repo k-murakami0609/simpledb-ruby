@@ -16,7 +16,7 @@ class SetIntRecordTest < Minitest::Test
     # Do nothing
   end
 
-  def test_iterator
+  def test_set_int_record
     SetIntRecord.write_to_log(@log_manager, 1, BlockId.new("aaa", 10), 3, 10000)
     iter = @log_manager.iterator
     record = LogRecord.create_log_record(iter.next)
