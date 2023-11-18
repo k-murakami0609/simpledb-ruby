@@ -21,8 +21,8 @@ class TableScan
   def set_val: (String field_name, untyped val) -> untyped
   def insert: -> nil
   def delete: -> untyped
-  def move_to_rid: (RecordId rid) -> untyped
-  def get_rid: -> RecordId?
+  def move_to_record_id: (RecordId record_id) -> untyped
+  def get_record_id: -> RecordId?
 
   private
   def move_to_block: (Integer block_number) -> RecordPage

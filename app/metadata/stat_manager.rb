@@ -41,7 +41,7 @@ class StatManager
     table_scan = TableScan.new(transaction, table_name, layout)
     while table_scan.next?
       num_records += 1
-      num_blocks = table_scan.get_rid&.block_number&.+ 1
+      num_blocks = table_scan.get_record_id&.block_number&.+ 1
     end
     table_scan.close
     StatInfo.new(num_blocks, num_records)
