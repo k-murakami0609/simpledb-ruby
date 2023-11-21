@@ -1,0 +1,15 @@
+# TypeProf 0.21.8
+
+# Classes
+class ProductScan
+  attr_accessor scan1: _Scan
+  attr_accessor scan2: _Scan
+  def initialize: (_Scan scan1, _Scan scan2) -> void
+  def before_first: -> void
+  def next: -> bool
+  def get_int: (String field_name) -> Integer
+  def get_string: (String field_name) -> String
+  def get_value: (String field_name) -> Constant
+  def has_field?: (String field_name) -> bool
+  def close: -> void
+end
