@@ -1,0 +1,15 @@
+# TypeProf 0.21.8
+
+# Classes
+class Predicate
+  attr_accessor terms: Array[Term]
+  def initialize: (?Term term) -> void
+  def conjoin_with: (Predicate predicate) -> void
+  def satisfied?: (_Scan scan) -> bool
+  def reduction_factor: (untyped plan) -> Numeric
+  def select_sub_predicate: (Schema schema) -> Predicate?
+  def join_sub_predicate: (Schema schema1, Schema schema2) -> Predicate?
+  def equates_with_constant: (String field_name) -> (Constant | nil)
+  def equates_with_field: (String field_name) -> (String | nil)
+  def to_s: -> String
+end
