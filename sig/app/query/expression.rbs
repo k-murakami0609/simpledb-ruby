@@ -1,0 +1,14 @@
+# TypeProf 0.21.8
+
+# Classes
+class Expression
+  attr_accessor value: Constant
+  attr_accessor field_name: String
+  def initialize: ( Constant | String value_or_field) -> void
+  def evaluate: (untyped scan) -> Constant
+  def field_name?: -> bool
+  def as_constant: -> (Constant | nil)
+  def as_field_name: -> (String | nil)
+  def applies_to?: (Schema schema) -> bool
+  def to_s: -> String
+end
