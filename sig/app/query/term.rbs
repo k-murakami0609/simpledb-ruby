@@ -1,0 +1,14 @@
+# TypeProf 0.21.8
+
+# Classes
+class Term
+  attr_accessor left_hand_side: Expression
+  attr_accessor right_hand_side: Expression
+  def initialize: (Expression left_hand_side, Expression right_hand_side) -> void
+  def satisfied?: (_Scan scan) -> (bool | nil)
+  def reduction_factor: (untyped plan) -> ((Float | Integer)?)
+  def equates_with_constant: (String field_name) -> (Constant | nil)
+  def equates_with_field: (String field_name) -> (String | nil)
+  def applies_to?: (Schema schema) -> bool
+  def to_s: -> String
+end
