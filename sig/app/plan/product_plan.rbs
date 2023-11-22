@@ -2,12 +2,12 @@
 
 # Classes
 class ProductPlan
-  attr_reader plan1: untyped
-  attr_reader plan2: untyped
-  attr_reader schema: untyped
-  def initialize: (untyped plan1, untyped plan2) -> void
-  def open: -> untyped
-  def blocks_accessed: -> untyped
-  def records_output: -> untyped
-  def distinct_values: (untyped field_name) -> untyped
+  attr_reader plan1: _Plan
+  attr_reader plan2: _Plan
+  attr_reader schema: Schema
+  def initialize: (_Plan plan1, _Plan plan2) -> void
+  def open: -> ProductScan
+  def blocks_accessed: -> Integer
+  def records_output: -> Integer
+  def distinct_values: (String field_name) -> Integer
 end
