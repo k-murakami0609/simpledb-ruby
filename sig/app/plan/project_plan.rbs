@@ -1,0 +1,12 @@
+# TypeProf 0.21.8
+
+# Classes
+class ProjectPlan
+  attr_reader plan: _Plan
+  attr_reader schema: Schema
+  def initialize: (_Plan plan, Array[String] field_name_list) -> void
+  def open: -> ProjectScan
+  def blocks_accessed: -> Integer
+  def records_output: -> Integer
+  def distinct_values: (String field_name) -> Integer
+end

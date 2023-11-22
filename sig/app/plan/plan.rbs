@@ -1,0 +1,7 @@
+interface _Plan
+  def open: -> _Scan
+  def blocks_accessed: -> Integer
+  def records_output: -> Integer
+  def distinct_values: (String field_name) -> Integer
+  def schema: () -> Schema
+end
