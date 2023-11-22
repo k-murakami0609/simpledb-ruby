@@ -18,7 +18,7 @@ class StatInfo
   attr_accessor num_blocks: Integer
   attr_accessor num_records: Integer
   def initialize: (Integer num_blocks, Integer num_records) -> void
-  def block_accessed: () -> Integer
+  def blocks_accessed: () -> Integer
   def records_output: () -> Integer
   def distinct_values: (String field_name) -> Integer
 end

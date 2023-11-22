@@ -56,7 +56,7 @@ class StatInfo
     @num_records = num_records
   end
 
-  def block_accessed
+  def blocks_accessed
     @num_blocks
   end
 

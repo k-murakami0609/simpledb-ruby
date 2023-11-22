@@ -1,0 +1,12 @@
+# TypeProf 0.21.8
+
+# Classes
+class SelectPlan
+  attr_reader plan: _Plan
+  attr_reader predicate: Predicate
+  def initialize: (_Plan plan, Predicate predicate) -> void
+  def open: -> SelectScan
+  def blocks_accessed: -> Integer
+  def records_output: -> Integer
+  def distinct_values: (String field_name) -> Integer?
+end

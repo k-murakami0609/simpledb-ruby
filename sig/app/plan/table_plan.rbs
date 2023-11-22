@@ -1,0 +1,15 @@
+# TypeProf 0.21.8
+
+# Classes
+class TablePlan
+  attr_reader table_name: String
+  attr_reader transaction: Transaction
+  attr_reader layout: Layout
+  attr_reader stat_info: StatInfo
+  def initialize: (Transaction transaction, String table_name, MetadataManager metadata_manager) -> void
+  def open: -> TableScan
+  def blocks_accessed: -> Integer
+  def records_output: -> Integer
+  def distinct_values: (String field_name) -> Integer
+  def schema: -> Schema
+end
