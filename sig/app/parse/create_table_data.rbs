@@ -1,5 +1,18 @@
 # TypeProf 0.21.8
 
 # Classes
-class CreateTableData
+class CreateTableData < ::Data
+  def self.new: (untyped table_name, untyped schema) -> instance
+    | (table_name: untyped, schema: untyped) -> instance
+
+  def self.[]: (untyped table_name, untyped schema) -> instance
+    | (table_name: untyped, schema: untyped) -> instance
+
+  def self.members: () -> [ :table_name, :schema ]
+
+  def members: () -> [ :table_name, :schema ]
+
+  attr_reader table_name: untyped
+
+  attr_reader schema: untyped
 end

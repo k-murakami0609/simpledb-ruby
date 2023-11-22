@@ -1,5 +1,22 @@
 # TypeProf 0.21.8
 
 # Classes
-class ModifyData
+class ModifyData < ::Data
+  def self.new: (untyped table_name, untyped field_name, untyped new_value, untyped predicate) -> instance
+    | (table_name: untyped, field_name: untyped, new_value: untyped, predicate: untyped) -> instance
+
+  def self.[]: (untyped table_name, untyped field_name, untyped new_value, untyped predicate) -> instance
+    | (table_name: untyped, field_name: untyped, new_value: untyped, predicate: untyped) -> instance
+
+  def self.members: () -> [ :table_name, :field_name, :new_value, :predicate ]
+
+  def members: () -> [ :table_name, :field_name, :new_value, :predicate ]
+
+  attr_reader table_name: untyped
+
+  attr_reader field_name: untyped
+
+  attr_reader new_value: untyped
+
+  attr_reader predicate: untyped
 end

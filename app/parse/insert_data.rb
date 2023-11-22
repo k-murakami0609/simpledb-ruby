@@ -1,3 +1,4 @@
 # frozen_string_literal: true
 
-InsertData = Data.define(:table_name, :field_names, :field_values)
+class InsertData < Data.define(:table_name, :field_names, :field_values)
+end

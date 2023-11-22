@@ -1,5 +1,18 @@
 # TypeProf 0.21.8
 
 # Classes
-class DeleteData
+class DeleteData < ::Data
+  def self.new: (untyped table_name, untyped predicate) -> instance
+    | (table_name: untyped, predicate: untyped) -> instance
+
+  def self.[]: (untyped table_name, untyped predicate) -> instance
+    | (table_name: untyped, predicate: untyped) -> instance
+
+  def self.members: () -> [ :table_name, :predicate ]
+
+  def members: () -> [ :table_name, :predicate ]
+
+  attr_reader table_name: untyped
+
+  attr_reader predicate: untyped
 end
