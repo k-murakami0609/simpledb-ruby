@@ -23,7 +23,7 @@ class Lexer
 
   def match_string_constant
     token = @tokens.first || ""
-    token == "'"
+    token[0] == "'"
   end
 
   def match_keyword(word)
