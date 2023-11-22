@@ -31,7 +31,7 @@ class Lexer
   end
 
   def match_identifier
-    !(KEY_WORDS.include? @tokens.first&.downcase || "")
+    !KEY_WORDS.include?(@tokens.first&.downcase || "")
   end
 
   def eat_delim(word)
