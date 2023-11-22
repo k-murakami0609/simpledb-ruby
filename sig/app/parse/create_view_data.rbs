@@ -1,0 +1,18 @@
+# TypeProf 0.21.8
+
+# Classes
+class CreateViewData < ::Data
+  def self.new: (untyped view_name, untyped query_data) -> instance
+    | (view_name: untyped, query_data: untyped) -> instance
+
+  def self.[]: (untyped view_name, untyped query_data) -> instance
+    | (view_name: untyped, query_data: untyped) -> instance
+
+  def self.members: () -> [ :view_name, :query_data ]
+
+  def members: () -> [ :view_name, :query_data ]
+
+  attr_reader view_name: untyped
+
+  attr_reader query_data: untyped
+end

@@ -1,0 +1,20 @@
+# TypeProf 0.21.8
+
+# Classes
+class QueryData < ::Data
+  def self.new: (untyped field_names, untyped table_names, untyped predicate) -> instance
+    | (field_names: untyped, table_names: untyped, predicate: untyped) -> instance
+
+  def self.[]: (untyped field_names, untyped table_names, untyped predicate) -> instance
+    | (field_names: untyped, table_names: untyped, predicate: untyped) -> instance
+
+  def self.members: () -> [ :field_names, :table_names, :predicate ]
+
+  def members: () -> [ :field_names, :table_names, :predicate ]
+
+  attr_reader field_names: untyped
+
+  attr_reader table_names: untyped
+
+  attr_reader predicate: untyped
+end
