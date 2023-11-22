@@ -1,0 +1,19 @@
+# TypeProf 0.21.8
+
+# Classes
+class Lexer
+  @tokens: Array[String]
+  KEY_WORDS: Array[String]
+
+  def initialize: (String query) -> void
+  def match_delim: (String word) -> bool
+  def match_int_constant: -> bool
+  def match_string_constant: -> bool
+  def match_keyword: (String word) -> bool
+  def match_identifier: -> bool
+  def eat_delim: (String word) -> void
+  def eat_int_constant: -> Integer
+  def eat_string_constant: -> String
+  def eat_keyword_constant: (String word) -> void
+  def eat_identifier: -> String
+end
