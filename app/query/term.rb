@@ -9,40 +9,41 @@ class Term
   end
 
   def satisfied?(scan)
-    left_value = left_hand_side.evaluate(scan)
-    right_value = right_hand_side.evaluate(scan)
-    left_value == right_value
+    left_hand_side.evaluate(scan) == right_hand_side.evaluate(scan)
   end
 
   def reduction_factor(plan)
-    if left_hand_side.field_name? && right_hand_side.field_name?
-      left_name = left_hand_side.as_field_name
-      right_name = right_hand_side.as_field_name
-      [plan.distinct_values(left_name), plan.distinct_values(right_name)].max
-    elsif left_hand_side.field_name?
-      left_name = left_hand_side.as_field_name
+    case [left_hand_side.value, right_hand_side.value]
+    in [String => left_name, String => right_name]
+      [plan.distinct_values(left_name), plan.distinct_values(right_name)].min
+    in [String => left_name, Constant]
       plan.distinct_values(left_name)
-    elsif right_hand_side.field_name?
-      right_name = right_hand_side.as_field_name
+    in [Constant, String => right_name]
       plan.distinct_values(right_name)
     else
-      (left_hand_side.as_constant == right_hand_side.as_constant) ? 1 : Float::INFINITY
+      (left_hand_side.value == right_hand_side.value) ? 1 : Float::INFINITY
     end
   end
 
   def equates_with_constant(field_name)
-    if left_hand_side.field_name? && left_hand_side.as_field_name == field_name && !right_hand_side.field_name?
-      right_hand_side.as_constant
-    elsif right_hand_side.field_name? && right_hand_side.as_field_name == field_name && !left_hand_side.field_name?
-      left_hand_side.as_constant
+    case [left_hand_side.value, right_hand_side.value]
+    in [String => left, Constant => right] if left == field_name
+      right
+    in [Constant => left, String => right] if right == field_name
+      left
+    else
+      nil
     end
   end
 
   def equates_with_field(field_name)
-    if left_hand_side.field_name? && left_hand_side.as_field_name == field_name && right_hand_side.field_name?
-      right_hand_side.as_field_name
-    elsif right_hand_side.field_name? && right_hand_side.as_field_name == field_name && left_hand_side.field_name?
-      left_hand_side.as_field_name
+    case [left_hand_side.value, right_hand_side.value]
+    in [String => left, String => right] if left == field_name
+      right
+    in [String => left, String => right] if right == field_name
+      left
+    else
+      nil
     end
   end
 

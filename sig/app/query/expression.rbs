@@ -2,9 +2,8 @@
 
 # Classes
 class Expression
-  attr_accessor value: Constant
-  attr_accessor field_name: String
-  def initialize: ( Constant | String value_or_field) -> void
+  attr_accessor value: untyped
+  def initialize: ( Constant | String value) -> void
   def evaluate: (untyped scan) -> Constant
   def field_name?: -> bool
   def as_constant: -> (Constant | nil)

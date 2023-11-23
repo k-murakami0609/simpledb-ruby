@@ -3,14 +3,9 @@
 # Classes
 class Constant
   include Comparable
+  attr_accessor value: (Integer | String)
 
-  attr_accessor integer_value: (Integer | nil)
-  attr_accessor string_value: (String | nil)
   def initialize: (Integer | String value) -> void
-  def as_integer: -> (Integer | nil)
-  def as_string: -> (String | nil)
   def <=>: (Constant other) -> Integer?
   def ==: (Constant other) -> bool?
-  def hash: -> Integer
-  def to_s: -> String
 end

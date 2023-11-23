@@ -43,6 +43,6 @@ class SelectPlan
 
   # セレクトのスキーマを返します。
   def schema
-    plan.schema
+    @plan.schema
   end
 end
