@@ -24,6 +24,11 @@ class TableManagerTest < Minitest::Test
     table_manager.create_table("table1", schema, transaction)
 
     layout = table_manager.get_layout("table1", transaction)
-    pp layout
+    assert_equal layout.schema.field_names, %w[name age]
+    assert_equal layout.schema.type("name"), Schema::FieldInfo::Type::VARCHAR
+    assert_equal layout.schema.type("age"), Schema::FieldInfo::Type::INTEGER
+    assert_equal layout.offset("name"), 4
+    assert_equal layout.offset("age"), 14
+    transaction.commit
   end
 end
