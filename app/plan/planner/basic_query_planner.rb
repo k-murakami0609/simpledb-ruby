@@ -16,14 +16,14 @@ class BasicQueryPlanner
   def create_plan(query_data, transaction)
     # ステップ1: 各テーブルまたはビューに対して計画を作成
     plans = query_data.table_names.map do |table_name|
-      view_definition = metadata_manager.get_view_definition(table_name, transaction)
+      view_definition = @metadata_manager.get_view_definition(table_name, transaction)
       if view_definition
         # ビューのクエリを再帰的に計画
         parser = Parser.new(view_definition)
         view_data = parser.query
         create_plan(view_data, transaction)
       else
-        TablePlan.new(transaction, table_name, metadata_manager)
+        TablePlan.new(transaction, table_name, @metadata_manager)
       end
     end
 

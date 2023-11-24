@@ -2,11 +2,12 @@
 
 # Classes
 class SelectPlan
-  attr_reader plan: _Plan
-  attr_reader predicate: Predicate
-  def initialize: (_Plan plan, Predicate predicate) -> void
-  def open: -> SelectScan
-  def blocks_accessed: -> Integer
-  def records_output: -> Integer
-  def distinct_values: (String field_name) -> Integer?
+  attr_reader plan: untyped
+  attr_reader predicate: untyped
+  def initialize: (untyped plan, untyped predicate) -> void
+  def open: -> untyped
+  def blocks_accessed: -> untyped
+  def records_output: -> untyped
+  def distinct_values: (untyped field_name) -> Integer?
+  def schema: -> untyped
 end

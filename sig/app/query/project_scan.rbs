@@ -2,14 +2,9 @@
 
 # Classes
 class ProjectScan
+  include _Scan
+
   attr_accessor scan: _Scan
   attr_accessor field_list: Array[String]
   def initialize: (_Scan scan, Array[String] field_list) -> void
-  def before_first: -> void
-  def next: -> bool
-  def get_int: (String field_name) -> Integer
-  def get_string: (String field_name) -> String
-  def get_value: (String field_name) -> Constant
-  def has_field?: (String field_name) -> bool
-  def close: -> void
 end
