@@ -11,7 +11,7 @@ class MetadataManager
   def create_table: (String table_name, Schema schema, Transaction transaction) -> void
   def get_layout: (String table_name, Transaction transaction) -> Layout
   def create_view: (String view_name, String view_def, Transaction transaction) -> void
-  def get_view_def: (String view_name, Transaction transaction) -> (String | nil)
+  def get_view_definition: (String view_name, Transaction transaction) -> (String | nil)
   def create_index: (String index_name, String table_name, String field_name, Transaction transaction) -> void
   def get_index_info: (String table_name, Transaction transaction) -> Hash[String, IndexInfo]
   def get_stat_info: (String table_name, Layout layout, Transaction transaction) -> StatInfo

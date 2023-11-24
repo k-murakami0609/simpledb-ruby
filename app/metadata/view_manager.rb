@@ -24,7 +24,7 @@ class ViewManager
     table_scan.close
   end
 
-  def get_view_def(view_name, transaction)
+  def get_view_definition(view_name, transaction)
     result = nil
     layout = @table_manager.get_layout("viewCatalog", transaction)
     table_scan = TableScan.new(transaction, "viewCatalog", layout)

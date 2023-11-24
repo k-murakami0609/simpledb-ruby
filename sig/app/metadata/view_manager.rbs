@@ -6,5 +6,5 @@ class ViewManager
   attr_accessor table_manager: TableManager
   def initialize: (bool is_new, TableManager table_manager, Transaction transaction) -> void
   def create_view: (String view_name, String view_def, Transaction transaction) -> untyped
-  def get_view_def: (String view_name, Transaction transaction) -> (String | nil)
+  def get_view_definition: (String view_name, Transaction transaction) -> (String | nil)
 end
