@@ -1,0 +1,3 @@
+class LoggerManager
+  def self.logger: () -> Logger
+end

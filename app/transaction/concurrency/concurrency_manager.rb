@@ -16,6 +16,7 @@ class ConcurrencyManager
   end
 
   def s_lock(block_id)
+    LoggerManager.logger.debug("ConcurrencyManager.s_lock: block_id=#{block_id}")
     unless @locks.key?(block_id)
       @@lock_table.s_lock(block_id)
       @locks[block_id] = LockType::S_LOCK
@@ -23,6 +24,7 @@ class ConcurrencyManager
   end
 
   def x_lock(block_id)
+    LoggerManager.logger.debug("ConcurrencyManager.x_lock: block_id=#{block_id}")
     unless x_lock?(block_id)
       s_lock(block_id)
       @@lock_table.x_lock(block_id)

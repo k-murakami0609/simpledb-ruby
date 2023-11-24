@@ -6,18 +6,23 @@ class Schema
 
   attr_reader field_names: Array[String]
   def initialize: -> void
-  def add_field: (String field_name, :integer | :varchar `type`, Integer length) -> FieldInfo
+  def add_field: (String field_name, Integer `type`, Integer length) -> FieldInfo
   def add_int_field: (String field_name) -> FieldInfo
   def add_string_field: (String field_name, Integer length) -> FieldInfo
   def add: (String field_name, Schema schema) -> FieldInfo
   def add_all: (Schema schema) -> untyped
   def has_field?: (String field_name) -> bool
-  def type: (String field_name) -> (:integer | :varchar)
+  def type: (String field_name) -> Integer
   def length: (String field_name) -> Integer
 
   class FieldInfo
-    attr_accessor type: :integer | :varchar
+    attr_accessor type: Integer
     attr_accessor length: Integer
-    def initialize: (:integer | :varchar `type`, Integer length) -> void
+    def initialize: (Integer `type`, Integer length) -> void
+
+    module Type
+      INTEGER: Integer
+      VARCHAR: Integer
+    end
   end
 end

@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class LockTable
-  MAX_LOCKS = 10_000  # 10 seconds
+  # MAX_LOCKS = 10_000  # 10 seconds
+  MAX_LOCKS = 2_000  # 10 seconds
   def initialize
     # block_id => value(0: no lock, 1+: s_lock, -1: x_lock)
     @locks = {}
@@ -17,7 +18,12 @@ class LockTable
       while x_lock?(block_id) && !waiting_too_long(timestamp)
         @full.wait(@mutex, MAX_LOCKS / 1000.0)
       end
-      raise "LockAbortException" if x_lock?(block_id)
+      if x_lock?(block_id)
+        LoggerManager.logger.debug("LockTable.s_lock:")
+        pp block_id
+        pp @locks
+        raise "LockAbortException"
+      end
 
       value = get_lock_value(block_id)
       @locks[block_id] = value + 1
@@ -31,7 +37,13 @@ class LockTable
       while other_s_lock?(block_id) && !waiting_too_long(timestamp)
         @full.wait(@mutex, MAX_LOCKS / 1000.0)
       end
-      raise "LockAbortException" if other_s_lock?(block_id)
+
+      if other_s_lock?(block_id)
+        LoggerManager.logger.debug("LockTable.x_lock:")
+        pp block_id
+        pp @locks
+        raise "LockAbortException"
+      end
 
       @locks[block_id] = -1
     end
