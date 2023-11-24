@@ -47,20 +47,16 @@ class Predicate
 
   # Determine if there is a term of the form "Field = constant"
   def equates_with_constant(field_name)
-    @terms.each do |term|
-      constant = term.equates_with_constant(field_name)
-      return constant unless constant.nil?
+    @terms.first do
+      term.equates_with_constant(field_name)
     end
-    nil
   end
 
   # Determine if there is a term of the form "Field1 = Field2"
   def equates_with_field(field_name)
-    @terms.each do |term|
-      field = term.equates_with_field(field_name)
-      return field unless field.nil?
+    @terms.first do
+      term.equates_with_field(field_name)
     end
-    nil
   end
 
   def to_s

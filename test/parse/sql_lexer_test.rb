@@ -4,7 +4,7 @@ require "minitest/autorun"
 
 require_relative "../../app/server/simple_db"
 
-class LexerTest < Minitest::Test
+class SqlLexerTest < Minitest::Test
   def setup
     # Do nothing
   end
