@@ -25,6 +25,7 @@ class StatManager
     @table_stats.clear
     @num_calls = 0
     table_catalog_layout = @table_manager.get_layout("tableCatalog", transaction)
+    # TODO: このときに buffer の pin が外れたみたいな動きに見える
     table_catalog = TableScan.new(transaction, "tableCatalog", table_catalog_layout)
     while table_catalog.next?
       table_name = table_catalog.get_string("tableName")
