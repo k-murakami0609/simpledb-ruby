@@ -1,5 +1,5 @@
-interface _Plan
-  def open: -> _Scan
+interface _Plan[T < ::_Scan]
+  def open: -> T
   def blocks_accessed: -> Integer
   def records_output: -> Integer
   def distinct_values: (String field_name) -> Integer

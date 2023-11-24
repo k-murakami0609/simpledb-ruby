@@ -6,7 +6,7 @@ class Term
   attr_accessor right_hand_side: Expression
   def initialize: (Expression left_hand_side, Expression right_hand_side) -> void
   def satisfied?: (_Scan scan) -> (bool | nil)
-  def reduction_factor: (_Plan plan) -> Numeric
+  def reduction_factor: (_Plan[_Scan] plan) -> Numeric
   def equates_with_constant: (String field_name) -> (Constant | nil)
   def equates_with_field: (String field_name) -> (String | nil)
   def applies_to?: (Schema schema) -> bool

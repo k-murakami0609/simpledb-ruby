@@ -58,8 +58,6 @@ class Parser
     QueryData.new(fields, tables, pred)
   end
 
-  private
-
   def select_list
     fields = [field]
     fields += select_list if @lexer.match_delim?(",")

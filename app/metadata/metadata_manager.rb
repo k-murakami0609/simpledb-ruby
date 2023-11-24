@@ -20,8 +20,8 @@ class MetadataManager
     @view_manager.create_view(view_name, view_def, transaction)
   end
 
-  def get_view_def(view_name, transaction)
-    @view_manager.get_view_def(view_name, transaction)
+  def get_view_definition(view_name, transaction)
+    @view_manager.get_view_definition(view_name, transaction)
   end
 
   def create_index(index_name, table_name, field_name, transaction)

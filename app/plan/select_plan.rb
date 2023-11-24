@@ -36,7 +36,7 @@ class SelectPlan
       if field_name2
         [@plan.distinct_values(field_name), @plan.distinct_values(field_name2)].min
       else
-        @plan.distinct_values(field_name)
+        @plan.distinct_values(field_name) || 0
       end
     end
   end

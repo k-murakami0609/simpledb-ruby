@@ -2,12 +2,9 @@
 
 # Classes
 class ProductPlan
-  attr_reader plan1: _Plan
-  attr_reader plan2: _Plan
+  include _Plan[ProductScan]
+  attr_reader plan1: _Plan[_Scan]
+  attr_reader plan2: _Plan[_Scan]
   attr_reader schema: Schema
-  def initialize: (_Plan plan1, _Plan plan2) -> void
-  def open: -> ProductScan
-  def blocks_accessed: -> Integer
-  def records_output: -> Integer
-  def distinct_values: (String field_name) -> Integer
+  def initialize: (_Plan[_Scan] plan1, _Plan[_Scan] plan2) -> void
 end

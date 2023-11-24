@@ -2,16 +2,11 @@
 
 # Classes
 class SelectScan
+  include _Scan
+
   attr_accessor scan: untyped
   attr_accessor predicate: Predicate
   def initialize: (_Scan scan, Predicate predicate) -> void
-  def before_first: -> void
-  def next: -> bool
-  def get_int: (String field_name) -> Integer
-  def get_string: (String field_name) -> String
-  def get_value: (String field_name) -> Constant
-  def has_field?: (String field_name) -> bool
-  def close: -> void
   def set_int: (String field_name, Integer value) -> void
   def set_string: (String field_name, String value) -> void
   def set_value: (String field_name, Constant value) -> void
