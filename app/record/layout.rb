@@ -34,9 +34,9 @@ class Layout
   def length_in_bytes(field_name)
     field_type = @schema.type(field_name)
     case field_type
-    when :integer
+    when Schema::FieldInfo::Type::INTEGER
       INTEGER_BYTE_SIZE
-    when :varchar
+    when Schema::FieldInfo::Type::VARCHAR
       @schema.length(field_name)
     else
       raise "unknown field type #{field_type}"

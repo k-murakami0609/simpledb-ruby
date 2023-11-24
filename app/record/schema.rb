@@ -14,11 +14,11 @@ class Schema
   end
 
   def add_int_field(field_name)
-    add_field(field_name, :integer, 0)
+    add_field(field_name, FieldInfo::Type::INTEGER, 0)
   end
 
   def add_string_field(field_name, length)
-    add_field(field_name, :varchar, length)
+    add_field(field_name, FieldInfo::Type::VARCHAR, length)
   end
 
   def add(field_name, schema)
@@ -45,6 +45,11 @@ class Schema
 
   class FieldInfo
     attr_accessor :type, :length
+
+    module Type
+      INTEGER = 0
+      VARCHAR = 1
+    end
 
     def initialize(type, length)
       @type = type

@@ -24,6 +24,7 @@ target :app do
   signature "sig"
   check "app"
   library "fileutils"
+  library "logger"
 
   ignore(
     "app/file/page.rb",

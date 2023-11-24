@@ -103,6 +103,8 @@ class TableScan
     record_page = RecordPage.new(@transaction, block_id, @layout)
     @current_slot = -1
 
+    LoggerManager.logger.debug("TableScan.move_to_block: block_id=#{block_id} block_number=#{block_number}")
+
     record_page
   end
 
@@ -112,6 +114,8 @@ class TableScan
     record_page = RecordPage.new(@transaction, block_id, @layout)
     record_page.format
     @current_slot = -1
+
+    LoggerManager.logger.debug("TableScan.move_to_new_block: block_id=#{block_id}")
 
     record_page
   end

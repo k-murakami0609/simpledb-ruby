@@ -52,9 +52,9 @@ class RecordPage
       schema.field_names.each do |field_name|
         field_position = offset(slot) + @layout.offset(field_name)
         case schema.type(field_name)
-        when :integer
+        when Schema::FieldInfo::Type::INTEGER
           @transaction.set_int(@block_id, field_position, 0, false)
-        when :varchar
+        when Schema::FieldInfo::Type::VARCHAR
           @transaction.set_string(@block_id, field_position, "", false)
         else
           raise "unrecognized field type"

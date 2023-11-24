@@ -3,9 +3,9 @@
 # Classes
 class TableManager
   MAX_NAME: Integer
-  attr_accessor table_catalog_layout: untyped
-  attr_accessor field_catalog_layout: untyped
-  def initialize: (untyped is_new, untyped transaction) -> void
-  def create_table: (String table_name, untyped schema, untyped transaction) -> untyped
-  def get_layout: (untyped table_name, untyped transaction) -> untyped
+  attr_accessor table_catalog_layout: Layout
+  attr_accessor field_catalog_layout: Layout
+  def initialize: (bool is_new, Transaction transaction) -> void
+  def create_table: (String table_name, Schema schema, Transaction transaction) -> void
+  def get_layout: (String table_name, Transaction transaction) -> Layout
 end
