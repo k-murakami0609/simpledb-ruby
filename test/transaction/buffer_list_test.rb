@@ -16,8 +16,8 @@ class BufferListTest < Minitest::Test
 
   def test_buffer_list
     buffer_list = BufferList.new(@simple_db.buffer_manager)
-    block1 = BlockId.new("test1", 0)
-    block2 = BlockId.new("test1", 1)
+    block1 = BlockId.new("buffer_list_test1", 0)
+    block2 = BlockId.new("buffer_list_test1", 1)
     buffer_list.pin(block1)
     buffer_list.pin(block1)
     buffer_list.pin(block2)

@@ -29,5 +29,6 @@ class TableManagerTest < Minitest::Test
     assert_equal layout.schema.type("age"), Schema::FieldInfo::Type::INTEGER
     assert_equal layout.offset("name"), 4
     assert_equal layout.offset("age"), 14
+    transaction.commit
   end
 end
