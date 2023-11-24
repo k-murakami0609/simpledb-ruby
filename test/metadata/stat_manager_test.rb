@@ -17,6 +17,11 @@ class StatManagerTest < Minitest::Test
   def test_stat_manager
     transaction = @simple_db.new_transaction
     table_manager = TableManager.new(true, transaction)
-    StatManager.new(table_manager, transaction)
+    stat_manager = StatManager.new(table_manager, transaction)
+    table_manager.create_table("table1", Schema.new, transaction)
+    stat_info = stat_manager.get_stat_info("table1", table_manager.get_layout("table1", transaction), transaction)
+
+    assert_equal stat_info.num_blocks, 0
+    assert_equal stat_info.num_records, 0
   end
 end

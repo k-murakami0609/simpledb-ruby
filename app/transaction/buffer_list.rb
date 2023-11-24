@@ -21,7 +21,11 @@ class BufferList
   def unpin(block_id)
     buffer = @buffers[block_id]
     @buffer_manager.unpin(buffer)
-    @pins.delete(block_id)
+    index = @pins.index(block_id)
+    unless index.nil?
+      # Array.delete だと 複数値を削除してしまう...
+      @pins.delete_at(index)
+    end
     @buffers.delete(block_id) unless @pins.include?(block_id)
   end
 
