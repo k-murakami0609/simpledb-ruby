@@ -15,7 +15,6 @@ class TableManagerTest < Minitest::Test
   end
 
   def test_table_manager
-    LoggerManager.set_level(Logger::DEBUG)
     transaction = @simple_db.new_transaction
     table_manager = TableManager.new(true, transaction)
 

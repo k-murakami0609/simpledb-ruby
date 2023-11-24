@@ -3,7 +3,7 @@
 require "logger"
 
 class LoggerManager
-  @@logger = Logger.new(STDOUT)
+  @@logger = Logger.new($stdout)
   @@logger.level = (ENV["LOG_LEVEL"] || Logger::WARN)
 
   def self.logger
