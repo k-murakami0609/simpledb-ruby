@@ -11,8 +11,7 @@ class Parser
   def term: -> untyped
   def predicate: -> untyped
   def query: -> untyped
-
-  private
+  
   def select_list: -> Array[untyped]
   def table_list: -> Array[untyped]
   def update_cmd: -> untyped

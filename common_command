@@ -3,3 +3,4 @@ steep check
 gh pr create -w
 gh pr view -w
 git diff --name-only | grep "\.rb$" | xargs -o -I{} typeprof --include-dir app --include-dir test {} -o sig/{}s
+git checkout main && git pull && git checkout -b xxx

@@ -2,9 +2,14 @@
 
 # Classes
 class ProjectScan
-  include _Scan
-
-  attr_accessor scan: _Scan
-  attr_accessor field_list: Array[String]
-  def initialize: (_Scan scan, Array[String] field_list) -> void
+  attr_accessor scan: untyped
+  attr_accessor field_list: untyped
+  def initialize: (untyped scan, untyped field_list) -> void
+  def before_first: -> untyped
+  def next: -> untyped
+  def get_int: (untyped field_name) -> untyped
+  def get_string: (untyped field_name) -> untyped
+  def get_value: (untyped field_name) -> untyped
+  def has_field?: (untyped field_name) -> untyped
+  def close: -> untyped
 end

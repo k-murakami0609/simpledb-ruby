@@ -1,0 +1,14 @@
+# TypeProf 0.21.8
+
+# Classes
+class BasicUpdatePlanner
+  @metadata_manager: untyped
+
+  def initialize: (MetadataManager metadata_manager) -> void
+  def execute_delete: (DeleteData delete_data, Transaction transaction) -> Integer
+  def execute_modify: (ModifyData modify_data, Transaction transaction) -> Integer
+  def execute_insert: (InsertData insert_data, Transaction transaction) -> Integer
+  def execute_create_table: (CreateTableData create_table_data, Transaction transaction) -> Integer
+  def execute_create_view: (CreateViewData create_view_data, Transaction transaction) -> Integer
+  def execute_create_index: (CreateIndexData create_index_data, Transaction transaction) -> Integer
+end
