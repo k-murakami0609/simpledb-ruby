@@ -2,19 +2,19 @@
 
 # Classes
 class InsertData < ::Data
-  def self.new: (untyped table_name, untyped field_names, untyped field_values) -> instance
+  def self.new: (untyped table_name, untyped field_names, untyped values) -> instance
     | (table_name: untyped, field_names: untyped, field_values: untyped) -> instance
 
-  def self.[]: (untyped table_name, untyped field_names, untyped field_values) -> instance
-    | (table_name: untyped, field_names: untyped, field_values: untyped) -> instance
+  def self.[]: (untyped table_name, untyped field_names, untyped values) -> instance
+    | (table_name: untyped, field_names: untyped, values: untyped) -> instance
 
-  def self.members: () -> [ :table_name, :field_names, :field_values ]
+  def self.members: () -> [ :table_name, :field_names, :values ]
 
-  def members: () -> [ :table_name, :field_names, :field_values ]
+  def members: () -> [ :table_name, :field_names, :values ]
 
   attr_reader table_name: untyped
 
   attr_reader field_names: untyped
 
-  attr_reader field_values: untyped
+  attr_reader values: untyped
 end
