@@ -36,7 +36,7 @@ class PlannerTest < Minitest::Test
     transaction.commit
   end
 
-  def test_insert
+  def test_insert_update_delete
     # LoggerManager.set_level(Logger::DEBUG)
     transaction = @simple_db.new_transaction
     metadata_manager = MetadataManager.new(false, transaction)
@@ -53,6 +53,21 @@ class PlannerTest < Minitest::Test
       assert_equal scan.get_int("field1"), 200
       assert_equal scan.get_string("field2"), "'test'"
     end
+
+    result = planner.execute_update("UPDATE table1 SET field1 = 300", transaction)
+    assert_equal result, 1
+
+    plan = planner.create_query_plan("select field1, field2 from table1", transaction)
+    scan = plan.open
+    scan.before_first
+    while scan.next?
+      assert_equal scan.get_int("field1"), 300
+      assert_equal scan.get_string("field2"), "'test'"
+    end
+
+    result = planner.execute_update("DELETE FROM table1", transaction)
+    assert_equal result, 1
+    assert_equal scan.next?, false
 
     transaction.commit
   end

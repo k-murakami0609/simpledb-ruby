@@ -31,6 +31,8 @@ class SqlLexer
   end
 
   def match_identifier?
+    # TODO: これは元コードと差分がありバグるかもしれない
+    return false if match_int_constant?
     !KEY_WORDS.include?(@tokens.first&.downcase || "")
   end
 

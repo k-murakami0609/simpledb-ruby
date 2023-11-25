@@ -10,7 +10,7 @@ class BasicUpdatePlanner
     plan = SelectPlan.new(plan, delete_data.predicate)
     update_scan = plan.open
     count = 0
-    while update_scan.next
+    while update_scan.next?
       update_scan.delete
       count += 1
     end
