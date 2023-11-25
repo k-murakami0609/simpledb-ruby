@@ -2,11 +2,11 @@
 
 # Classes
 class ModifyData < ::Data
-  def self.new: (String table_name, String field_name, untyped new_value, Predicate predicate) -> instance
-    | (table_name: String, field_name: String, new_value: untyped, predicate: Predicate) -> instance
+  def self.new: (String table_name, String field_name, Expression new_value, Predicate predicate) -> instance
+    | (table_name: String, field_name: String, new_value: Expression, predicate: Predicate) -> instance
 
-  def self.[]: (String table_name, String field_name, untyped new_value, Predicate predicate) -> instance
-    | (table_name: String, field_name: String, new_value: untyped, predicate: Predicate) -> instance
+  def self.[]: (String table_name, String field_name, Expression new_value, Predicate predicate) -> instance
+    | (table_name: String, field_name: String, new_value: Expression, predicate: Predicate) -> instance
 
   def self.members: () -> [ :table_name, :field_name, :new_value, :predicate ]
 
@@ -16,7 +16,7 @@ class ModifyData < ::Data
 
   attr_reader field_name: String
 
-  attr_reader new_value: untyped
+  attr_reader new_value: Expression
 
   attr_reader predicate: Predicate
 end
