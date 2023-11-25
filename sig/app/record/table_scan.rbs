@@ -2,6 +2,8 @@
 
 # Classes
 class TableScan
+  include _Scan
+
   @transaction: Transaction
   @layout: Layout
   @file_name: String
@@ -9,20 +11,13 @@ class TableScan
 
   attr_reader current_slot: Integer
   def initialize: (Transaction transaction, String table_name, Layout layout) -> void
-  def before_first: -> untyped
-  def next?: -> bool
-  def get_int: (String field_name) -> untyped
-  def get_string: (String field_name) -> untyped
-  def get_value: (String field_name) -> untyped
-  def has_field?: (String field_name) -> untyped
-  def close: -> nil
-  def set_int: (String field_name, Integer val) -> untyped
-  def set_string: (String field_name, String val) -> untyped
-  def set_value: (String field_name, Constant val) -> untyped
+  def set_int: (String field_name, Integer val) -> void
+  def set_string: (String field_name, String val) -> void
+  def set_value: (String field_name, Constant val) -> void
   def insert: -> nil
-  def delete: -> untyped
-  def move_to_record_id: (RecordId record_id) -> untyped
-  def get_record_id: -> RecordId?
+  def delete: -> void
+  def move_to_record_id: (RecordId record_id) -> void
+  def get_record_id: -> RecordId
 
   private
   def move_to_block: (Integer block_number) -> RecordPage

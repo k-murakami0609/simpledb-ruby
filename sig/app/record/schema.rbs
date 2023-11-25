@@ -10,7 +10,7 @@ class Schema
   def add_int_field: (String field_name) -> FieldInfo
   def add_string_field: (String field_name, Integer length) -> FieldInfo
   def add: (String field_name, Schema schema) -> FieldInfo
-  def add_all: (Schema schema) -> untyped
+  def add_all: (Schema schema) -> void
   def has_field?: (String field_name) -> bool
   def type: (String field_name) -> Integer
   def length: (String field_name) -> Integer

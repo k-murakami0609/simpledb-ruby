@@ -5,15 +5,15 @@ class LogIterator
   include Enumerable[untyped]
   INTEGER_SIZE: Integer
 
-  @file_manager: untyped
-  @page: untyped
+  @file_manager: FileManager
+  @page: Page
   @boundary: untyped
-  @currentpos: untyped
+  @currentpos: Integer
 
-  attr_accessor block_id: untyped
-  def initialize: (untyped file_manager, untyped block_id) -> void
+  attr_accessor block_id: BlockId
+  def initialize: (FileManager file_manager, BlockId block_id) -> void
   def each: ?{ (untyped) -> untyped } -> ((Enumerator[bot, untyped] | Enumerator[untyped, untyped])?)
-  def next?: -> untyped
+  def next?: -> bool
   def next: -> untyped
 
   private

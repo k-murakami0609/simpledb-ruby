@@ -10,11 +10,11 @@ class HashIndex
   attr_accessor search_key: Constant
   attr_accessor table_scan: TableScan
   def initialize: (Transaction transaction, String index_name, Layout layout) -> void
-  def before_first: (Constant search_key) -> untyped
+  def before_first: (Constant search_key) -> void
   def next?: -> bool
   def get_data_record_id: -> RecordId
   def insert: (Constant val, RecordId record_id) -> untyped
   def delete: (Constant val, RecordId record_id) -> nil
-  def close: -> untyped
+  def close: -> void
   def self.search_cost: (Integer num_blocks, Integer records_per_block) -> untyped
 end

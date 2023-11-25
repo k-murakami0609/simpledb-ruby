@@ -8,7 +8,7 @@ class Page
 
   def initialize: (untyped arg) -> void
   def get_int: (Integer offset) -> Integer
-  def set_int: (Integer offset, untyped n) -> Integer
+  def set_int: (Integer offset, Integer n) -> Integer
   def get_bytes: (Integer offset) -> Array[Integer]
   def set_bytes: (Integer offset, untyped bytes) -> Integer
   def get_string: (Integer offset) -> String

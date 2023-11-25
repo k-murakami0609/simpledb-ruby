@@ -2,17 +2,17 @@
 
 # Classes
 class ConcurrencyManager
-  @locks: Hash[untyped, String]
+  @locks: Hash[BlockId, String]
   @@lock_table: LockTable
 
   def self.lock_table: -> LockTable
   def initialize: -> void
-  def s_lock: (untyped block_id) -> String?
-  def x_lock: (untyped block_id) -> String?
-  def release: -> Hash[untyped, String]
+  def s_lock: (BlockId block_id) -> String?
+  def x_lock: (BlockId block_id) -> String?
+  def release: -> Hash[BlockId, String]
 
   private
-  def x_lock?: (untyped block_id) -> bool
+  def x_lock?: (BlockId block_id) -> bool
 end
 
 module LockType

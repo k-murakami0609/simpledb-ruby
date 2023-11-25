@@ -2,12 +2,9 @@
 
 # Classes
 class SelectPlan
-  attr_reader plan: untyped
-  attr_reader predicate: untyped
-  def initialize: (untyped plan, untyped predicate) -> void
-  def open: -> untyped
-  def blocks_accessed: -> untyped
-  def records_output: -> untyped
-  def distinct_values: (untyped field_name) -> Integer?
-  def schema: -> untyped
+  include _Plan[SelectScan]
+
+  attr_reader plan: _Plan[_Scan]
+  attr_reader predicate: Predicate
+  def initialize: (_Plan[_Scan] plan, Predicate predicate) -> void
 end

@@ -8,7 +8,7 @@ class BufferList
 
   def initialize: (BufferManager buffer_manager) -> void
   def get_buffer: (BlockId block_id) -> Buffer?
-  def pin: (BlockId block_id) -> Array[untyped]
-  def unpin: (BlockId block_id) -> untyped
-  def unpin_all: -> Array[untyped]
+  def pin: (BlockId block_id) -> void
+  def unpin: (BlockId block_id) -> void
+  def unpin_all: -> void
 end

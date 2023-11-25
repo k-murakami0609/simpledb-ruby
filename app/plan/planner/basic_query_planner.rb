@@ -31,6 +31,8 @@ class BasicQueryPlanner
     plan = plans.shift
     plans.each { |next_plan| plan = ProductPlan.new(plan, next_plan) }
 
+    raise "No tables" unless plan
+
     # ステップ3: 述語に基づいて選択計画を追加
     plan = SelectPlan.new(plan, query_data.predicate)
 
