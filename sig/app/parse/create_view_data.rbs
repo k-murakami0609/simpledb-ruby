@@ -2,17 +2,17 @@
 
 # Classes
 class CreateViewData < ::Data
-  def self.new: (untyped view_name, untyped query_data) -> instance
-    | (view_name: untyped, query_data: untyped) -> instance
+  def self.new: (String view_name, QueryData query_data) -> instance
+    | (view_name: String, query_data: QueryData) -> instance
 
-  def self.[]: (untyped view_name, untyped query_data) -> instance
-    | (view_name: untyped, query_data: untyped) -> instance
+  def self.[]: (String view_name, QueryData query_data) -> instance
+    | (view_name: String, query_data: QueryData) -> instance
 
   def self.members: () -> [ :view_name, :query_data ]
 
   def members: () -> [ :view_name, :query_data ]
 
-  attr_reader view_name: untyped
+  attr_reader view_name: String
 
-  attr_reader query_data: untyped
+  attr_reader query_data: QueryData
 end
