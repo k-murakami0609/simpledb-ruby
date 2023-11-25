@@ -11,6 +11,8 @@ class Layout
     @name_to_offset = {}
 
     unless name_to_offset.nil? || slot_size.nil?
+      raise "slot_size is negative" if slot_size < 0
+
       @name_to_offset = name_to_offset
       @slot_size = slot_size
       return
@@ -21,6 +23,7 @@ class Layout
       @name_to_offset[field_name] = position
       position += length_in_bytes(field_name)
     end
+    raise "position is negative" if position < 0
     @slot_size = position
   end
 

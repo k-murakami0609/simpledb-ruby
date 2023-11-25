@@ -38,10 +38,10 @@ class IndexInfo
     schema = Schema.new
     schema.add_int_field("block")
     schema.add_int_field("id")
-    if table_schema.type(field_name) == :integer
+    if @table_schema.type(field_name) == Schema::FieldInfo::Type::INTEGER
       schema.add_int_field("dataVal")
     else
-      field_length = table_schema.length(field_name)
+      field_length = @table_schema.length(field_name)
       schema.add_string_field("dataVal", field_length)
     end
     Layout.new(schema)

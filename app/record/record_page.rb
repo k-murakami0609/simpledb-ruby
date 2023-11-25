@@ -47,6 +47,7 @@ class RecordPage
   def format
     slot = 0
     while valid_slot?(slot)
+      LoggerManager.logger.debug("RecordPage.format: block_id=#{@block_id} slot=#{slot} slot_size=#{@layout.slot_size} offset=#{offset(slot)}")
       @transaction.set_int(@block_id, offset(slot), SlotState::EMPTY, false)
       schema = @layout.schema
       schema.field_names.each do |field_name|
