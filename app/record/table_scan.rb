@@ -36,8 +36,8 @@ class TableScan
     @record_page.get_string(@current_slot, field_name)
   end
 
-  def get_val(field_name)
-    if @layout.schema.type(field_name) == :integer
+  def get_value(field_name)
+    if @layout.schema.type(field_name) == Schema::FieldInfo::Type::INTEGER
       get_int(field_name)
     else
       get_string(field_name)
@@ -53,18 +53,21 @@ class TableScan
   end
 
   def set_int(field_name, val)
+    LoggerManager.logger.debug("TableScan.set_int: field_name=#{field_name} val=#{val}")
     @record_page.set_int(@current_slot, field_name, val)
   end
 
   def set_string(field_name, val)
+    LoggerManager.logger.debug("TableScan.set_string: field_name=#{field_name} val=#{val}")
     @record_page.set_string(@current_slot, field_name, val)
   end
 
-  def set_val(field_name, val)
-    if @layout.schema.type(field_name) == :integer
-      set_int(field_name, val.to_i)
+  def set_value(field_name, val)
+    LoggerManager.logger.debug("TableScan.set_value: field_name=#{field_name} val=#{val} type=#{@layout.schema.type(field_name)}")
+    if @layout.schema.type(field_name) == Schema::FieldInfo::Type::INTEGER
+      set_int(field_name, val.value.to_i)
     else
-      set_string(field_name, val.to_s)
+      set_string(field_name, val.value.to_s)
     end
   end
 

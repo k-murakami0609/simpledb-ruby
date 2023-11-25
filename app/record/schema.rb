@@ -36,11 +36,15 @@ class Schema
   end
 
   def type(field_name)
-    @name_to_field_info[field_name].type
+    info = @name_to_field_info[field_name]
+    raise "field_name=#{field_name} is not found" unless info
+    info.type
   end
 
   def length(field_name)
-    @name_to_field_info[field_name].length
+    info = @name_to_field_info[field_name]
+    raise "field_name=#{field_name} is not found" unless info
+    info.length
   end
 
   class FieldInfo

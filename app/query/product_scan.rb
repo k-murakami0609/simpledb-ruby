@@ -11,15 +11,15 @@ class ProductScan
 
   def before_first
     @scan1.before_first
-    @scan1.next
+    @scan1.next?
     @scan2.before_first
   end
 
-  def next
-    return true if @scan2.next
+  def next?
+    return true if @scan2.next?
 
     @scan2.before_first
-    @scan2.next && scan1.next
+    @scan2.next? && scan1.next?
   end
 
   def get_int(field_name)

@@ -4,5 +4,5 @@
 class BasicQueryPlanner
   attr_reader metadata_manager: MetadataManager
   def initialize: (MetadataManager metadata_manager) -> void
-  def create_plan: (QueryData query_data, Transaction transaction) -> untyped
+  def create_plan: (QueryData query_data, Transaction transaction) -> _Plan[_Scan]
 end

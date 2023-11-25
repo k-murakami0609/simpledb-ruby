@@ -18,8 +18,8 @@ class SelectScan
 
   # スキャンを次のレコードに進める
   # @return [Boolean] 次のレコードが存在する場合は true、そうでない場合は false
-  def next
-    while @scan.next
+  def next?
+    while @scan.next?
       return true if @predicate.satisfied?(@scan)
     end
     false

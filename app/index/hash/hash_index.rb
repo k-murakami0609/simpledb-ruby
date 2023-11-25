@@ -8,8 +8,8 @@ class HashIndex
     @transaction = transaction
     @index_name = index_name
     @layout = layout
-    @search_key = "default"
-    @table_scan = TableScan.new(transaction, @search_key, layout)
+    @search_key = Constant.new("default")
+    @table_scan = TableScan.new(transaction, "default", layout)
   end
 
   def before_first(search_key)
@@ -22,7 +22,7 @@ class HashIndex
 
   def next?
     while @table_scan.next?
-      return true if @table_scan.get_val("dataVal") == search_key
+      return true if @table_scan.get_value("dataVal") == search_key
     end
     false
   end
@@ -38,7 +38,7 @@ class HashIndex
     @table_scan.insert
     @table_scan.set_int("block", record_id.block_number)
     @table_scan.set_int("id", record_id.slot)
-    @table_scan.set_val("dataVal", val)
+    @table_scan.set_value("dataVal", val)
   end
 
   def delete(val, record_id)

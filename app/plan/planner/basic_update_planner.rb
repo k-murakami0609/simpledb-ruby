@@ -23,9 +23,9 @@ class BasicUpdatePlanner
     plan = SelectPlan.new(plan, modify_data.predicate)
     update_scan = plan.open
     count = 0
-    while update_scan.next
+    while update_scan.next?
       value = modify_data.new_value.evaluate(update_scan)
-      update_scan.set_val(modify_data.field_name, value)
+      update_scan.set_value(modify_data.field_name, value)
       count += 1
     end
     update_scan.close
@@ -37,7 +37,7 @@ class BasicUpdatePlanner
     update_scan = plan.open
     update_scan.insert
     insert_data.field_names.zip(insert_data.values).each do |field_name, value|
-      update_scan.set_val(field_name, value)
+      update_scan.set_value(field_name, value)
     end
     update_scan.close
     1
