@@ -2,6 +2,7 @@
 
 class IndexManager
   attr_accessor :layout, :table_manager, :stat_manager
+  MAX_NAME = 200
 
   def initialize(is_new, table_manager, stat_manager, transaction)
     if is_new

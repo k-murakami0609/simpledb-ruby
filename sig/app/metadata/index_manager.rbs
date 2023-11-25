@@ -4,10 +4,10 @@
 class IndexManager
   MAX_NAME: Integer
 
-  attr_accessor layout: untyped
-  attr_accessor table_manager: untyped
-  attr_accessor stat_manager: untyped
-  def initialize: (untyped is_new, untyped table_manager, untyped stat_manager, untyped transaction) -> void
-  def create_index: (untyped index_name, untyped table_name, untyped field_name, untyped transaction) -> untyped
-  def get_index_info: (untyped table_name, untyped transaction) -> Hash[untyped, untyped]
+  attr_accessor layout: Layout
+  attr_accessor table_manager: TableManager
+  attr_accessor stat_manager: StatManager
+  def initialize: (bool is_new, TableManager table_manager, StatManager stat_manager, Transaction transaction) -> void
+  def create_index: (String index_name, String table_name, String field_name, Transaction transaction) -> untyped
+  def get_index_info: (String table_name, Transaction transaction) -> Hash[String, IndexInfo]
 end
