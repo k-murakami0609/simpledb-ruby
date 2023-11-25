@@ -5,26 +5,26 @@ class Parser
   @lexer: SqlLexer
 
   def initialize: (String statement) -> void
-  def field: -> untyped
-  def constant: -> untyped
-  def expression: -> untyped
-  def term: -> untyped
-  def predicate: -> untyped
-  def query: -> untyped
+  def field: -> String
+  def constant: -> Constant
+  def expression: -> Expression
+  def term: -> Term
+  def predicate: -> Predicate
+  def query: -> QueryData
   
-  def select_list: -> Array[untyped]
-  def table_list: -> Array[untyped]
+  def select_list: -> Array[String]
+  def table_list: -> Array[String]
   def update_cmd: -> untyped
-  def insert: -> untyped
-  def delete: -> untyped
-  def modify: -> untyped
-  def create: -> untyped
-  def create_table: -> untyped
-  def create_view: -> untyped
-  def create_index: -> untyped
-  def field_list: -> Array[untyped]
-  def const_list: -> Array[untyped]
-  def field_defs: -> untyped
-  def field_def: -> untyped
-  def field_type: (untyped field_name) -> untyped
+  def insert: -> InsertData
+  def delete: -> DeleteData
+  def modify: -> ModifyData
+  def create: -> (CreateTableData | CreateViewData | CreateIndexData)
+  def create_table: -> CreateTableData
+  def create_view: -> CreateViewData
+  def create_index: -> CreateIndexData
+  def field_list: -> Array[String]
+  def const_list: -> Array[Constant]
+  def field_defs: -> Schema
+  def field_def: -> Schema
+  def field_type: (String field_name) -> Schema
 end

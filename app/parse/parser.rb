@@ -66,7 +66,10 @@ class Parser
 
   def table_list
     tables = [@lexer.eat_identifier]
-    tables += table_list if @lexer.match_delim?(",")
+    while @lexer.match_delim?(",")
+      @lexer.eat_delim(",")
+      tables << @lexer.eat_identifier
+    end
     tables
   end
 
@@ -168,21 +171,27 @@ class Parser
 
   def field_list
     fields = [field]
-    fields += field_list if @lexer.match_delim?(",")
+    while @lexer.match_delim?(",")
+      @lexer.eat_delim(",")
+      fields << field
+    end
     fields
   end
 
   def const_list
     constants = [constant]
-    constants += const_list if @lexer.match_delim?(",")
+    while @lexer.match_delim?(",")
+      @lexer.eat_delim(",")
+      constants << constant
+    end
     constants
   end
 
   def field_defs
     schema = field_def
-    if @lexer.match_delim?(",")
+    while @lexer.match_delim?(",")
       @lexer.eat_delim(",")
-      schema.merge!(field_defs)
+      schema.add_all(field_def)
     end
     schema
   end

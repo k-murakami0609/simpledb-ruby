@@ -2,19 +2,19 @@
 
 # Classes
 class CreateIndexData < ::Data
-  def self.new: (untyped index_name, untyped table_name, untyped field_name) -> instance
-    | (index_name: untyped, table_name: untyped, field_name: untyped) -> instance
+  def self.new: (String index_name, String table_name, String field_name) -> instance
+    | (index_name: String, table_name: String, field_name: String) -> instance
 
-  def self.[]: (untyped index_name, untyped table_name, untyped field_name) -> instance
-    | (index_name: untyped, table_name: untyped, field_name: untyped) -> instance
+  def self.[]: (String index_name, String table_name, String field_name) -> instance
+    | (index_name: String, table_name: String, field_name: String) -> instance
 
   def self.members: () -> [ :index_name, :table_name, :field_name ]
 
   def members: () -> [ :index_name, :table_name, :field_name ]
 
-  attr_reader index_name: untyped
+  attr_reader index_name: String
 
-  attr_reader table_name: untyped
+  attr_reader table_name: String
 
-  attr_reader field_name: untyped
+  attr_reader field_name: String
 end

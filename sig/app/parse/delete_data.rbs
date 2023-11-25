@@ -2,17 +2,17 @@
 
 # Classes
 class DeleteData < ::Data
-  def self.new: (untyped table_name, untyped predicate) -> instance
-    | (table_name: untyped, predicate: untyped) -> instance
+  def self.new: (String table_name, Predicate predicate) -> instance
+    | (table_name: String, predicate: Predicate) -> instance
 
-  def self.[]: (untyped table_name, untyped predicate) -> instance
-    | (table_name: untyped, predicate: untyped) -> instance
+  def self.[]: (String table_name, Predicate predicate) -> instance
+    | (table_name: String, predicate: Predicate) -> instance
 
   def self.members: () -> [ :table_name, :predicate ]
 
   def members: () -> [ :table_name, :predicate ]
 
-  attr_reader table_name: untyped
+  attr_reader table_name: String
 
-  attr_reader predicate: untyped
+  attr_reader predicate: Predicate
 end

@@ -35,6 +35,6 @@ class BasicQueryPlanner
     plan = SelectPlan.new(plan, query_data.predicate)
 
     # ステップ4: フィールド名に基づいて投影計画を作成
-    ProjectPlan.new(plan, query_data.fields)
+    ProjectPlan.new(plan, query_data.field_names)
   end
 end
