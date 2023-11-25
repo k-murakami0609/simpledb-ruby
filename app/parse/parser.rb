@@ -60,7 +60,10 @@ class Parser
 
   def select_list
     fields = [field]
-    fields += select_list if @lexer.match_delim?(",")
+    while @lexer.match_delim?(",")
+      @lexer.eat_delim(",")
+      fields << field
+    end
     fields
   end
 

@@ -7,7 +7,7 @@ class Constant
 
   def initialize(value)
     if value.is_a?(Integer) || value.is_a?(String)
-      @value
+      @value = value
     else
       raise ArgumentError, "Invalid type for Constant"
     end

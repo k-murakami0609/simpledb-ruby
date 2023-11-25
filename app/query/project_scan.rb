@@ -18,8 +18,8 @@ class ProjectScan
 
   # スキャンを次のレコードに進める
   # @return [Boolean] 次のレコードが存在する場合は true、そうでない場合は false
-  def next
-    @scan.next
+  def next?
+    @scan.next?
   end
 
   # 指定されたフィールドの整数値を返す

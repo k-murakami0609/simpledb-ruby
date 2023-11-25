@@ -19,7 +19,7 @@ class ParserTest < Minitest::Test
     assert_equal query_data.field_names, ["*"]
     assert_equal query_data.table_names, %w[table1 table2]
     assert_equal query_data.predicate.terms[0].left_hand_side.value, "field1"
-    assert_equal query_data.predicate.terms[0].right_hand_side.value, "2"
+    assert_equal query_data.predicate.terms[0].right_hand_side.value, Constant.new(2)
     assert_equal query_data.predicate.terms[1].left_hand_side.value, "field2"
     assert_equal query_data.predicate.terms[1].right_hand_side.value, "'3'"
   end
@@ -70,14 +70,14 @@ class ParserTest < Minitest::Test
     update = Parser.new("UPDATE table1 SET field1 = 1 WHERE field1 = 2").modify
     assert_equal update.table_name, "table1"
     assert_equal update.field_name, "field1"
-    assert_equal update.new_value.value, "1"
+    assert_equal update.new_value.value, Constant.new(1)
   end
 
   def test_delete
     delete = Parser.new("DELETE FROM table1 WHERE field1 = 2 AND field2 = '3'").delete
     assert_equal delete.table_name, "table1"
     assert_equal delete.predicate.terms[0].left_hand_side.value, "field1"
-    assert_equal delete.predicate.terms[0].right_hand_side.value, "2"
+    assert_equal delete.predicate.terms[0].right_hand_side.value, Constant.new(2)
     assert_equal delete.predicate.terms[1].left_hand_side.value, "field2"
     assert_equal delete.predicate.terms[1].right_hand_side.value, "'3'"
   end
