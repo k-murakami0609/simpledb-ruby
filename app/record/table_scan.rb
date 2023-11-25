@@ -38,9 +38,9 @@ class TableScan
 
   def get_value(field_name)
     if @layout.schema.type(field_name) == Schema::FieldInfo::Type::INTEGER
-      get_int(field_name)
+      Constant.new(get_int(field_name))
     else
-      get_string(field_name)
+      Constant.new(get_string(field_name))
     end
   end
 

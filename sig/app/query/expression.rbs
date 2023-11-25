@@ -2,6 +2,7 @@
 
 # Classes
 class Expression
+  # union の型の絞り込みが行われない？っぽいので、untyped にしておく
   attr_accessor value: untyped
   def initialize: ( Constant | String value) -> void
   def evaluate: (untyped scan) -> Constant

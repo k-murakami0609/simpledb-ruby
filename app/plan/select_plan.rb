@@ -34,7 +34,7 @@ class SelectPlan
     else
       field_name2 = @predicate.equates_with_field(field_name)
       if field_name2
-        [@plan.distinct_values(field_name), @plan.distinct_values(field_name2)].min
+        [@plan.distinct_values(field_name), @plan.distinct_values(field_name2)].min || 0
       else
         @plan.distinct_values(field_name) || 0
       end

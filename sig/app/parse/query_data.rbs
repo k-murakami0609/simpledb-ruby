@@ -5,8 +5,8 @@ class QueryData < ::Data
   def self.new: (Array[String] field_names, Array[String] table_names, Predicate predicate) -> instance
     | (field_names: Array[String], table_names: Array[String], predicate: Predicate) -> instance
 
-  def self.[]: (untyped field_names, untyped table_names, untyped predicate) -> instance
-    | (field_names: untyped, table_names: untyped, predicate: untyped) -> instance
+  def self.[]: (Array[String] field_names, Array[String] table_names, Predicate predicate) -> instance
+    | (field_names: Array[String], table_names: Array[String], predicate: Predicate) -> instance
 
   def self.members: () -> [ :field_names, :table_names, :predicate ]
 

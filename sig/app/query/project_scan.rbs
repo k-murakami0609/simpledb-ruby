@@ -4,7 +4,7 @@
 class ProjectScan
   include _Scan
 
-  attr_accessor scan: untyped
-  attr_accessor field_list: untyped
-  def initialize: (untyped scan, untyped field_list) -> void
+  attr_accessor scan: _Scan
+  attr_accessor field_list: Array[String]
+  def initialize: (_Scan scan, Array[String] field_list) -> void
 end

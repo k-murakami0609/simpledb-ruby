@@ -2,7 +2,7 @@
 
 # Classes
 class BasicUpdatePlanner
-  @metadata_manager: untyped
+  @metadata_manager: MetadataManager
 
   def initialize: (MetadataManager metadata_manager) -> void
   def execute_delete: (DeleteData delete_data, Transaction transaction) -> Integer

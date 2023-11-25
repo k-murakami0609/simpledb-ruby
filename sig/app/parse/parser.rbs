@@ -14,7 +14,7 @@ class Parser
   
   def select_list: -> Array[String]
   def table_list: -> Array[String]
-  def update_cmd: -> untyped
+  def update_cmd: -> (CreateTableData | CreateViewData | CreateIndexData | InsertData | DeleteData | ModifyData)
   def insert: -> InsertData
   def delete: -> DeleteData
   def modify: -> ModifyData
