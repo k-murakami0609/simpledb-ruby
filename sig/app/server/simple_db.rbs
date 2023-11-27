@@ -3,12 +3,13 @@
 # Classes
 class SimpleDB
   LOG_FILE: String
-  attr_reader block_size: untyped
-  attr_reader buffer_size: untyped
+  attr_reader block_size: Integer
+  attr_reader buffer_size: Integer
   attr_reader log_file: String
-  attr_reader file_manager: untyped
-  attr_reader buffer_manager: untyped
-  attr_reader log_manager: untyped
+  attr_reader file_manager: FileManager
+  attr_reader buffer_manager: BufferManager
+  attr_reader log_manager: LogManager
+  attr_reader metadata_manager: MetadataManager
   def initialize: (untyped db_directory_path, untyped block_size, untyped buffer_size) -> void
-  def new_transaction: -> untyped
+  def new_transaction: -> Transaction
 end
