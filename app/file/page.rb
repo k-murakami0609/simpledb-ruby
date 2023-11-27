@@ -43,6 +43,7 @@ class Page
   end
 
   def set_bytes(offset, bytes)
+    raise ArgumentError, "offset is negative, offset=#{offset}" if offset.negative?
     LoggerManager.logger.debug("Page.set_bytes: offset=#{offset}, bytes=#{bytes}")
 
     @buffer.seek(offset)

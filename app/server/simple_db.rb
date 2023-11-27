@@ -6,7 +6,7 @@ require_all Dir.glob("app/**/*.rb").reject { |f| f.include?("app/server/simple_d
 class SimpleDB
   LOG_FILE = "simpledb.log"
 
-  attr_reader :block_size, :buffer_size, :log_file, :file_manager, :buffer_manager, :log_manager
+  attr_reader :block_size, :buffer_size, :log_file, :file_manager, :buffer_manager, :log_manager, :planner
 
   def initialize(db_directory_path, block_size, buffer_size)
     @block_size = block_size
@@ -16,6 +16,14 @@ class SimpleDB
     @file_manager = FileManager.new(db_directory_path, block_size)
     @log_manager = LogManager.new(@file_manager, LOG_FILE)
     @buffer_manager = BufferManager.new(@file_manager, @log_manager, buffer_size)
+
+    transaction = new_transaction
+    metadata_manager = MetadataManager.new(@file_manager.is_new, transaction)
+    @planner = Planner.new(
+      BasicQueryPlanner.new(metadata_manager),
+      BasicUpdatePlanner.new(metadata_manager)
+    )
+    transaction.commit
   end
 
   def new_transaction
