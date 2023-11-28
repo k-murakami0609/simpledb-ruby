@@ -1,0 +1,16 @@
+# TypeProf 0.21.8
+
+# Classes
+class MultiBufferProductPlan
+  include _Plan[MultiBufferProductScan]
+
+  @transaction: Transaction
+  @left_hand_side: _Plan[_Scan]
+  @right_hand_side: _Plan[_Scan]
+
+  attr_reader schema: Schema
+  def initialize: (Transaction transaction,  _Plan[_Scan] left_hand_side,  _Plan[_Scan] right_hand_side) -> void
+
+  private
+  def copy_records_from: (_Plan[_Scan] plan) -> untyped
+end

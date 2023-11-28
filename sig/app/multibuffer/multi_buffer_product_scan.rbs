@@ -1,0 +1,20 @@
+# TypeProf 0.21.8
+
+# Classes
+class MultiBufferProductScan
+  include _Scan
+  @transaction: Transaction
+  @left_hand_side_scan: _Scan
+  @filename: String
+  @layout: Layout
+  @file_size: Integer
+  @chunk_size: Integer
+  @next_block_number: Integer
+  @right_hand_side_scan: ChunkScan
+  @product_scan: ProductScan
+
+  def initialize: (Transaction transaction, _Scan left_hand_side_scan, String table_name, Layout layout) -> void
+
+  private
+  def use_next_chunk: -> bool
+end

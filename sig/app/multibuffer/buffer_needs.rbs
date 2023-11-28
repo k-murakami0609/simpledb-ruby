@@ -1,0 +1,7 @@
+# TypeProf 0.21.8
+
+# Classes
+class BufferNeeds
+  def self.best_root: (Integer available_buffers, Integer output_size) -> Integer
+  def self.best_factor: (Integer available_buffers, Integer output_size) -> Integer
+end
