@@ -1,0 +1,6 @@
+interface _AggregationFunction
+  def process_first: (_Scan scan) -> void
+  def process_next: (_Scan scan) -> void
+  def value: -> Constant
+  def field_name: -> String
+end

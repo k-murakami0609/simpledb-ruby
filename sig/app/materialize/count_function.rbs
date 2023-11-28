@@ -1,0 +1,10 @@
+# TypeProf 0.21.8
+
+# Classes
+class CountFunction
+  include _AggregationFunction
+
+  @field_name: String
+  attr_reader count: Integer
+  def initialize: (String field_name) -> void
+end
