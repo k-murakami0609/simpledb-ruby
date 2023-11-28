@@ -1,0 +1,10 @@
+# TypeProf 0.21.8
+
+# Classes
+class GroupValue
+  attr_reader name_to_values: Hash[String, Constant]
+  def initialize: (_Scan scan, Array[String] fields) -> void
+  def get_value: (String field_name) -> (Constant | nil)
+  def ==: (GroupValue other) -> bool
+  def hash: -> Integer
+end
