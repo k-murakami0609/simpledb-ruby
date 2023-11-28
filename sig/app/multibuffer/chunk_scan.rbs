@@ -1,0 +1,21 @@
+# TypeProf 0.21.8
+
+# Classes
+class ChunkScan
+  include _Scan
+
+  @transaction: Transaction
+  @file_name: String
+  @layout: Layout
+  @start_block_number: Integer
+  @end_block_number: Integer
+  @buffers: Array[RecordPage]
+  @current_block_number: Integer
+  @record_page: RecordPage
+  @current_slot: Integer
+
+  def initialize: (Transaction transaction, String file_name, Layout layout, Integer start_block_number, Integer end_block_number) -> void
+
+  private
+  def move_to_block: (Integer block_number) -> Integer
+end
